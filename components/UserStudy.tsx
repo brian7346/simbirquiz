@@ -1,10 +1,6 @@
-import { FontAwesome } from "@expo/vector-icons";
-import React, { useEffect, useRef } from "react";
-import { View, StyleSheet, Text, TouchableOpacity } from "react-native";
-import Fonts from "../constants/Fonts";
+import React from "react";
+import { StyleSheet, TouchableOpacity } from "react-native";
 import Colors from "../constants/Colors";
-import { LinearGradient } from "expo-linear-gradient";
-import { BackgroundPlate } from "./BackgroundPlate";
 import LottieView from "lottie-react-native";
 
 export class UserStudy extends React.PureComponent<{onClick: () => void}> {
@@ -15,10 +11,7 @@ export class UserStudy extends React.PureComponent<{onClick: () => void}> {
   }
 
   handleNavigate = () => {
-    // this.props.navigation.navigate("Quiz")
     this.props.onClick()
-
-    // this.props.navigation.navigate('CardStack')
   };
   render() {
     return (
