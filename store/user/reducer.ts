@@ -6,8 +6,9 @@ export const userSlice = createSlice({
     name: 'Илья',
     avatar: '',
     achievements: [],
-    coins: 0,
+    coins: 100,
     experience: 0,
+    lvl: 1,
     coursesCompleted: 0,
     coursesCompleteList: []
   },
