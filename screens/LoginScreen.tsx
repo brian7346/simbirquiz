@@ -17,7 +17,8 @@ export default class LoginScreen extends PureComponent {
   }
 
   handleNavigate = () => {
-    this.props.navigation.navigate("Quiz")
+    // this.props.navigation.navigate("Quiz")
+    this.props.navigation.navigate("CardStack")
 
     // this.props.navigation.navigate('CardStack')
   };
