@@ -19,17 +19,20 @@ export default class LoginScreen extends PureComponent {
     }
 
     handleNavigate = () => {
-        this.props.navigation.navigate('CardStack')
+        this.props.navigation.navigate('Quiz')
     };
 
     render() {
         return (
             <View style={styles.container}>
                 <View style={styles.welcomeContainer}>
-                    <Text style={[Fonts.base, {fontSize: 36}]}>
-                        Добро </Text>
-                    <Text style={[Fonts.base, {fontSize: 36}]}>
-                        пожаловать
+                    <Text style={[Fonts.base, {fontSize: 32}]}>
+                        Добро пожаловать</Text>
+                    <Text style={[Fonts.bold, {fontSize: 42}]}>
+                        Андрей,
+                    </Text>
+                    <Text style={[Fonts.base]}>
+                        готов узнать что то новое?
                     </Text>
                 </View>
 
@@ -47,12 +50,13 @@ export default class LoginScreen extends PureComponent {
                 <TouchableOpacity activeOpacity={.8} onPress={this.handleNavigate}>
                     <LinearGradient
                         // Button Linear Gradient
-                        colors={['#033273', '#830396']}
+                        colors={['#61ADE3', '#6B4ADD']}
                         style={styles.btn}
                         start={{x: 0, y: .95}}
                         end={{x: 1, y: 1}}
                         >
-                        <FontAwesome size={30} style={{ marginBottom: -3 }}  color={'white'} name={'code'} />
+                        <FontAwesome size={30} style={{ marginBottom: -3 }}  color={ Colors.dark.text} name={'code'} />
+                        <Text style={[Fonts.bold, {color: Colors.dark.text, fontSize: 24}]}> Приступим </Text>
                     </LinearGradient>
                 </TouchableOpacity>
             </View>
@@ -63,16 +67,17 @@ export default class LoginScreen extends PureComponent {
 
 const styles = StyleSheet.create({
     btn: {
-
+        justifyContent: "space-around",
         padding: 16,
-        paddingHorizontal: 64,
-        borderRadius: 36,
+        marginHorizontal: 64,
+        borderRadius: 32,
+        flexDirection: 'row'
     },
     welcomeContainer: {
         backgroundColor: Colors.dark.background,
         alignItems: 'flex-start',
         justifyContent: 'flex-start',
-        marginHorizontal: 36,
+        marginHorizontal: 32,
         // padding: 20,
     },
     container: {
