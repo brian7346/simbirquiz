@@ -1,7 +1,6 @@
 import * as React from 'react';
 import {Button, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
-import { RootStackScreenProps } from '../types';
 import Colors from "../constants/Colors";
 import LottieView from 'lottie-react-native';
 import {PureComponent, useEffect, useRef} from "react";
@@ -46,7 +45,6 @@ export default class LoginScreen extends PureComponent {
                 />
                 <TouchableOpacity activeOpacity={.8} onPress={this.handleNavigate}>
                     <LinearGradient
-                        // Button Linear Gradient
                         colors={['#033273', '#830396']}
                         style={styles.btn}
                         start={{x: 0, y: .95}}
@@ -63,7 +61,6 @@ export default class LoginScreen extends PureComponent {
 
 const styles = StyleSheet.create({
     btn: {
-
         padding: 16,
         paddingHorizontal: 64,
         borderRadius: 36,
@@ -73,14 +70,11 @@ const styles = StyleSheet.create({
         alignItems: 'flex-start',
         justifyContent: 'flex-start',
         marginHorizontal: 36,
-        // padding: 20,
     },
     container: {
         flex: 1,
         backgroundColor: Colors.dark.background,
-        // alignItems: 'center',
         justifyContent: 'center',
-        // padding: 20,
     },
     title: {
         fontSize: 20,
