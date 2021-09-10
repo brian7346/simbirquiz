@@ -1,8 +1,12 @@
 import React from "react";
 import QuizSingleChoice from "../components/QuizSingleChoice";
 import Colors from "../constants/Colors";
+import {useNavigation} from "@react-navigation/native";
 
 const QuizScreen = () => {
+
+    const navigation = useNavigation()
+
     const data = [
         {
             question:
@@ -11,30 +15,30 @@ const QuizScreen = () => {
             optionB: "Наследование",
             answer: "Прототип",
         },
-        {
-            question: "Как узнать есть ли св-во у объекта или оно находится в цепочке прототипов?",
-            optionA: "hasOwnProperty",
-            optionB: "objectKeys",
-            answer: "Francophone",
-        },
-        {
-            question: "Сколько может быть прототипов у одного объекта?",
-            optionA: "Один",
-            optionB: "Шесть",
-            optionC: "Сколько угодно",
-            answer: "Один",
-        },
-        {
-            question: "Проверяет принадлежность экземпляра какому то классу?",
-            optionA: "instanceof",
-            optionB: "typeof",
-            answer: "instanceof",
-        },   {
-            question: "Замыкания комбинация функции и лексического окружения, \t\t\tдругими словами область памяти созданная функцией в которой \tесть доступ к переменным созданным в этой функции\n?",
-            optionA: "замыкания",
-            optionB: "область видимости",
-            answer: "замыкания",
-        },
+        // {
+        //     question: "Как узнать есть ли св-во у объекта или оно находится в цепочке прототипов?",
+        //     optionA: "hasOwnProperty",
+        //     optionB: "objectKeys",
+        //     answer: "Francophone",
+        // },
+        // {
+        //     question: "Сколько может быть прототипов у одного объекта?",
+        //     optionA: "Один",
+        //     optionB: "Шесть",
+        //     optionC: "Сколько угодно",
+        //     answer: "Один",
+        // },
+        // {
+        //     question: "Проверяет принадлежность экземпляра какому то классу?",
+        //     optionA: "instanceof",
+        //     optionB: "typeof",
+        //     answer: "instanceof",
+        // },   {
+        //     question: "Замыкания комбинация функции и лексического окружения, \t\t\tдругими словами область памяти созданная функцией в которой \tесть доступ к переменным созданным в этой функции\n?",
+        //     optionA: "замыкания",
+        //     optionB: "область видимости",
+        //     answer: "замыкания",
+        // },
     ];
     return (
         <QuizSingleChoice
@@ -64,7 +68,7 @@ const QuizScreen = () => {
             endButtonTextStyle={{ color: "#FFF" }}
             buttonsContainerStyle={{ marginTop: "auto" }}
             onEnd={(results) => {
-                console.log(results);
+                navigation.navigate('QuizResult', results)
             }}
             data={data}
         />

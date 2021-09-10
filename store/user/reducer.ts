@@ -5,10 +5,11 @@ export const userSlice = createSlice({
   initialState: {
     name: '',
     avatar: '',
-    achivements: [],
+    achievements: [],
     coins: 0,
-    expirience: 0,
-    coursesCompleted: 0
+    experience: 0,
+    coursesCompleted: 0,
+    coursesCompleteList: []
   },
   reducers: {
     setUser: (state, action) => {

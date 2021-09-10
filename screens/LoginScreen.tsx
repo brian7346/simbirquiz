@@ -8,14 +8,13 @@ import {PureComponent, useEffect, useRef} from "react";
 import Fonts from "../constants/Fonts";
 import { LinearGradient } from 'expo-linear-gradient';
 import {FontAwesome} from "@expo/vector-icons";
+import { SSButton } from '../components/SimbirButton';
 
 export default class LoginScreen extends PureComponent {
     private animation: any;
 
     componentDidMount() {
         this.animation.play();
-
-        console.log(this.props)
     }
 
     handleNavigate = () => {
@@ -47,18 +46,7 @@ export default class LoginScreen extends PureComponent {
                     }}
                     source={require('../assets/wavesAnimation.json')}
                 />
-                <TouchableOpacity activeOpacity={.8} onPress={this.handleNavigate}>
-                    <LinearGradient
-                        // Button Linear Gradient
-                        colors={['#61ADE3', '#6B4ADD']}
-                        style={styles.btn}
-                        start={{x: 0, y: .95}}
-                        end={{x: 1, y: 1}}
-                        >
-                        <FontAwesome size={30} style={{ marginBottom: -3 }}  color={ Colors.dark.text} name={'code'} />
-                        <Text style={[Fonts.bold, {color: Colors.dark.text, fontSize: 24}]}> Приступим </Text>
-                    </LinearGradient>
-                </TouchableOpacity>
+                <SSButton onPress={this.handleNavigate} icon='code' text='Приступим' styles={styles.btn}/>
             </View>
         );
     }
