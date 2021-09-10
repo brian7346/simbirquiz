@@ -5,12 +5,15 @@ import {
   SafeAreaView,
   Dimensions
 } from "react-native";
+import { UserHeader } from "../components/UserHeader";
+import Colors from "../constants/Colors";
 
 export default class CardStackScreen extends React.Component {
 
   render() {
     return (
-        <SafeAreaView style={styles.root}>
+        <SafeAreaView style={styles.container}>
+          <UserHeader />
           <Text>Cards </Text>
         </SafeAreaView>
     );
@@ -18,11 +21,8 @@ export default class CardStackScreen extends React.Component {
 }
 
 const styles = StyleSheet.create({
-  root: {
-    flex: 1,
-    margin: 16
-  },
   container: {
-    flex: 1
+    flex: 1,
+    backgroundColor: Colors.dark.background,
   }
 });

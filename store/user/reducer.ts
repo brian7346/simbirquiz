@@ -3,7 +3,7 @@ import { createSlice, configureStore } from '@reduxjs/toolkit'
 export const userSlice = createSlice({
   name: 'user',
   initialState: {
-    name: '',
+    name: 'Илья',
     avatar: '',
     achievements: [],
     coins: 0,

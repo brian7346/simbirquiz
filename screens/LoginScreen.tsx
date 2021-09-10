@@ -1,7 +1,6 @@
 import * as React from 'react';
 import {Button, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
-import { RootStackScreenProps } from '../types';
 import Colors from "../constants/Colors";
 import LottieView from 'lottie-react-native';
 import {PureComponent, useEffect, useRef} from "react";
@@ -18,7 +17,9 @@ export default class LoginScreen extends PureComponent {
     }
 
     handleNavigate = () => {
-        this.props.navigation.navigate('Quiz')
+        // this.props.navigation.navigate('Quiz')
+
+        this.props.navigation.navigate('CardStack')
     };
 
     render() {
@@ -65,15 +66,12 @@ const styles = StyleSheet.create({
         backgroundColor: Colors.dark.background,
         alignItems: 'flex-start',
         justifyContent: 'flex-start',
-        marginHorizontal: 32,
-        // padding: 20,
+        marginHorizontal: 36,
     },
     container: {
         flex: 1,
         backgroundColor: Colors.dark.background,
-        // alignItems: 'center',
         justifyContent: 'center',
-        // padding: 20,
     },
     title: {
         fontSize: 20,

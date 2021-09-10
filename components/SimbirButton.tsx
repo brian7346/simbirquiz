@@ -10,7 +10,7 @@ interface ButtonProps {
     text: string,
     icon: string,
     onPress: () => void,
-    gradient: string[],
+    gradient?: string[],
     styles: ViewStyle
 }
 export const SSButton = ({text, icon, onPress, styles, gradient = ['#61ADE3', '#6B4ADD']}: ButtonProps) => {
