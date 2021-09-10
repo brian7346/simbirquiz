@@ -5,10 +5,6 @@ import LoginScreen from "../../screens/LoginScreen";
 import CardStackScreen from "../../screens/CardStackScreen";
 import QuizNavigator from "./QuizNavigator";
 
-
-
-
-
 const Stack = createNativeStackNavigator();
 
 export default function MainNavigator() {
