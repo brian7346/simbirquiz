@@ -3,12 +3,13 @@ import { createSlice, configureStore } from '@reduxjs/toolkit'
 export const userSlice = createSlice({
   name: 'user',
   initialState: {
-      name: 'Илья',
-      avatar: '',
-      achivements: [],
-      coins: 0,
-      expirience: 0,
-      coursesCompleted: 0
+    name: 'Илья',
+    avatar: '',
+    achievements: [],
+    coins: 0,
+    experience: 0,
+    coursesCompleted: 0,
+    coursesCompleteList: []
   },
   reducers: {
     setUser: (state, action) => {

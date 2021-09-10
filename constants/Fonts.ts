@@ -8,6 +8,7 @@ export default {
     },
     bold: {
         fontSize: 16,
+        color: Colors.dark.text,
         fontFamily: 'nunito-bold'
     }
 }
