@@ -4,10 +4,6 @@ import * as React from 'react';
 import LoginScreen from "../../screens/LoginScreen";
 import CardStackScreen from "../../screens/CardStackScreen";
 
-
-
-
-
 const Stack = createNativeStackNavigator();
 
 export default function MainNavigator() {
