@@ -7,7 +7,7 @@ export default {
         fontFamily: 'nunito-regular'
     },
     bold: {
-        fontsize: 16,
+        fontSize: 16,
         fontFamily: 'nunito-bold'
     }
 }

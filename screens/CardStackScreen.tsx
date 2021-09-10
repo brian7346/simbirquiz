@@ -5,7 +5,10 @@ import {
   SafeAreaView,
   Dimensions
 } from "react-native";
+
 import { UserHeader, CardsCarousel } from "../components/UserHeader";
+import { UserAchivements } from "../components/UserAchivements";
+import { UserHeader } from "../components/UserHeader";
 import Colors from "../constants/Colors";
 
 export default class CardStackScreen extends React.Component {
@@ -14,6 +17,7 @@ export default class CardStackScreen extends React.Component {
     return (
         <SafeAreaView style={styles.container}>
           <UserHeader />
+          <UserAchivements />
           <CardsCarousel />
         </SafeAreaView>
     );
