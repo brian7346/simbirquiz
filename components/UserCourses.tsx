@@ -3,8 +3,7 @@ import React from "react";
 import { View, StyleSheet, Text, SafeAreaView } from "react-native";
 import Fonts from "../constants/Fonts";
 import Colors from "../constants/Colors";
-import { PurpulePlate } from "./PurpulePlate";
-import { FlatList } from "react-native-gesture-handler";
+import { PurpuleShortPlate } from "./PurpuleShortPlate";
 import { useSelector } from "react-redux";
 
 export const UserCourses = () => {
@@ -13,36 +12,43 @@ export const UserCourses = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.plate}>
-        <View style={styles.icon}>
-          <FontAwesome size={35} name="code" color="orange" />
-        </View>
-        <Text style={[Fonts.base, styles.title]}>
-          <Text style={[Fonts.bold, styles.title]}>{courses.length}</Text> Всего
-        </Text>
-      </View>
-      <View style={styles.plate}>
-        <View style={styles.icon}>
-          <FontAwesome size={35} name="check" color="lightgreen" />
-        </View>
-        <Text style={[Fonts.base, styles.title]}>
-          <Text style={[Fonts.bold, styles.title]}>
-            {user.coursesCompleted}{" "}
+      <PurpuleShortPlate onPress={() => null}>
+        <>
+          <View style={styles.icon}>
+            <FontAwesome size={35} name="code" color="orange" />
+          </View>
+          <Text style={[Fonts.base, styles.title]}>
+            <Text style={[Fonts.bold, styles.title]}>{courses.length}</Text>{" "}
+            Всего
           </Text>
-          Пройдено
-        </Text>
-      </View>
-      <View style={styles.plate}>
-        <View style={styles.icon}>
-          <FontAwesome size={35} name="close" color="red" />
-        </View>
-        <Text style={[Fonts.base, styles.title]}>
-          <Text style={[Fonts.bold, styles.title]}>
-            {courses.length - user.coursesCompleted}{" "}
+        </>
+      </PurpuleShortPlate>
+      <PurpuleShortPlate onPress={() => null}>
+        <>
+          <View style={styles.icon}>
+            <FontAwesome size={35} name="check" color="lightgreen" />
+          </View>
+          <Text style={[Fonts.base, styles.title]}>
+            <Text style={[Fonts.bold, styles.title]}>
+              {user.coursesCompleted}{" "}
+            </Text>
+            Пройдено
           </Text>
-          Провалено
-        </Text>
-      </View>
+        </>
+      </PurpuleShortPlate>
+      <PurpuleShortPlate onPress={() => null}>
+        <>
+          <View style={styles.icon}>
+            <FontAwesome size={30} name="close" color="red" />
+          </View>
+          <Text style={[Fonts.base, styles.title]}>
+            <Text style={[Fonts.bold, styles.title]}>
+              {courses.length - user.coursesCompleted}{" "}
+            </Text>
+            Провалено
+          </Text>
+        </>
+      </PurpuleShortPlate>
     </SafeAreaView>
   );
 };
