@@ -12,6 +12,8 @@ export default {
   dark: {
     text: '#fff',
     background: '#16192C',
+    lightGray: '#5B3A8F',
+    darkGray: '#303065',
     second: '#16192C',
     purple: '#5543D6',
     tint: tintColorDark,
