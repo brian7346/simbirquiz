@@ -16,7 +16,7 @@ export class CardsCarousel extends React.Component {
 
   handleNavigate = () => {
     console.log(111);
-    this.props.navigation.navigate("Quiz");
+    this.props.navigation.navigate("Course");
   };
 
   constructor(props) {

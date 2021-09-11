@@ -2,7 +2,7 @@ import React from "react";
 import { StyleSheet, Text, SafeAreaView, Dimensions, View, TouchableOpacity } from "react-native";
 import Colors from "../constants/Colors";
 import {FontAwesome} from "@expo/vector-icons";
-
+import { LinearGradient } from "expo-linear-gradient";
 
 
 export default class CourseScreen extends React.Component<{
@@ -33,10 +33,22 @@ export default class CourseScreen extends React.Component<{
         <View style={{ flex: 2, marginTop: 20 }}>
           <Text style={styles.titleText}>Приступим?</Text>
           <TouchableOpacity onPress={this.goToEducation}>
-            <Text style={styles.materials}>Изучить материалы</Text>
+            <LinearGradient
+            colors={[Colors.dark.darkGray, Colors.dark.lightGray]}
+            style={styles.shadow}
+          >
+              <Text style={{color: 'white', fontSize: 25 }}>Изучить материалы</Text>
+            </LinearGradient>
           </TouchableOpacity>
           <TouchableOpacity onPress={this.handleUserStudyClick}>
-            <Text style={styles.materials}>Пройти тестирование</Text>
+            <View>
+            <LinearGradient
+              colors={[Colors.dark.darkGray, Colors.dark.lightGray]}
+              style={styles.shadow}
+            >
+              <Text style={{color: 'white', fontSize: 25}}>Пройти тестирование</Text>
+            </LinearGradient>
+            </View>
           </TouchableOpacity>
         </View>
       </SafeAreaView>
@@ -58,13 +70,23 @@ const styles = StyleSheet.create({
   },
   materials: {
     borderStyle:'solid',
-    width: 'auto',
-    height: 'auto',
     backgroundColor: Colors.dark.purple,
     borderRadius: 15,
     marginBottom: 10,
     color: Colors.light.tabIconDefault,
     fontSize: 25,
     padding: 15
-  }
+  },
+  shadow: {
+    borderRadius: 32,
+    marginBottom: 32,
+    padding: 36,
+    width: 'auto',
+    height: 240,
+    flex: 1,
+    shadowOffset: {
+      width: 0,
+      height: 8,
+    },
+  },
 });
