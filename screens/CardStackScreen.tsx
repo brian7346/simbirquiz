@@ -6,9 +6,9 @@ import {
   Dimensions
 } from "react-native";
 
-import { UserHeader, CardsCarousel } from "../components/UserHeader";
-import { UserAchivements } from "../components/UserAchivements";
 import { UserHeader } from "../components/UserHeader";
+import { CardsCarousel } from "../components/CardsCarousel"
+import { UserAchivements } from "../components/UserAchivements";
 import Colors from "../constants/Colors";
 
 export default class CardStackScreen extends React.Component {
