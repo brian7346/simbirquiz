@@ -57,8 +57,16 @@ const InternScreen = ({ route, navigation }) => {
           <FlatList
             data={DATA}
             ItemSeparatorComponent={() => <View style={{ height: 20 }} />}
-            renderItem={({ item }) => (
-              <CardPlate onPress={() => null} key={item.name}>
+            renderItem={({ item, index }) => (
+              <CardPlate
+                onPress={() =>
+                  navigation.navigate("InternsCours", {
+                    name: item.name,
+                    internId: intern.id,
+                  })
+                }
+                key={index}
+              >
                 <>
                   <View style={styles.icon}>
                     <FontAwesome
