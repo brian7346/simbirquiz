@@ -4,28 +4,28 @@ import Colors from "../constants/Colors";
 import { useNavigation } from "@react-navigation/native";
 
 const QuizScreen = () => {
-  const navigation = useNavigation()
+  const navigation = useNavigation();
 
   const data = {
+    awards: [
+      {
+        coins: 5,
+        // achievement: 515,
+        conditions: 1,
+      },
+      {
+        conditions: 10,
+        coins: 2,
+      },
+    ],
 
-      awards: [
-          {
-            coins: 5,
-            // achievement: 515,
-            conditions: 1
-          },
-          {
-            conditions: 10,
-            coins: 2
-          }
-      ],
-
-      questions : [{
-          question:
-              "В прототипном наследовании экземпляры наследуются от других экземпляров. /n Это?",
-          optionA: "Прототип",
-          optionB: "Наследование",
-          answer: "Прототип",
+    questions: [
+      {
+        question:
+          "В прототипном наследовании экземпляры наследуются от других экземпляров. /n Это?",
+        optionA: "Прототип",
+        optionB: "Наследование",
+        answer: "Прототип",
       },
       // {
       //     question: "Как узнать есть ли св-во у объекта или оно находится в цепочке прототипов?",
@@ -51,10 +51,8 @@ const QuizScreen = () => {
       //     optionB: "область видимости",
       //     answer: "замыкания",
       // },
-      ]
-  }
-
-
+    ],
+  };
 
   return (
     <QuizSingleChoice
@@ -66,12 +64,20 @@ const QuizScreen = () => {
       responseStyle={{
         borderRadius: 15,
       }}
-      responseTextStyle={{ fontSize: 16, textAlign: "center", paddingBottom: 8 }}
-      selectedResponseTextStyle={{ fontSize: 16, textAlign: "center", paddingBottom: 8 }}
+      responseTextStyle={{
+        fontSize: 16,
+        textAlign: "center",
+        paddingBottom: 8,
+      }}
+      selectedResponseTextStyle={{
+        fontSize: 16,
+        textAlign: "center",
+        paddingBottom: 8,
+      }}
       selectedResponseStyle={{
         borderRadius: 15,
-          borderColor: '#707070',
-          borderWidth: 1,
+        borderColor: "#707070",
+        borderWidth: 1,
         backgroundColor: "#fa5541",
       }}
       responseRequired={true}
@@ -87,13 +93,13 @@ const QuizScreen = () => {
       buttonsContainerStyle={{ marginTop: "auto" }}
       onEnd={(results) => {
         navigation.navigate("QuizResult", {
-            results,
-            awards: data.awards
-        })
+          results,
+          awards: data.awards,
+        });
       }}
       data={data.questions}
     />
   );
-}
+};
 
 export default QuizScreen;

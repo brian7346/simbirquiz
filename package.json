@@ -10,11 +10,6 @@
     "prepare": "husky install",
     "lint": "./node_modules/.bin/eslint"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
   "jest": {
     "preset": "jest-expo"
   },
