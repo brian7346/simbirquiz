@@ -3,7 +3,7 @@ import { StyleSheet, Text, SafeAreaView, Dimensions, View, TouchableOpacity } fr
 import Colors from "../constants/Colors";
 import {FontAwesome} from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
-
+import Fonts from '../constants/Fonts';
 
 export default class CourseScreen extends React.Component<{
   navigation: { navigate: (screen: string) => void };
@@ -31,13 +31,13 @@ export default class CourseScreen extends React.Component<{
               name='chevron-left' />
         </TouchableOpacity>
         <View style={{ flex: 2, marginTop: 20 }}>
-          <Text style={styles.titleText}>Приступим?</Text>
+          <Text style={[Fonts.base, styles.heading]}>Приступим?</Text>
           <TouchableOpacity onPress={this.goToEducation}>
             <LinearGradient
             colors={[Colors.dark.darkGray, Colors.dark.lightGray]}
             style={styles.shadow}
           >
-              <Text style={{color: 'white', fontSize: 25 }}>Изучить материалы</Text>
+              <Text style={[Fonts.base, styles.textStyle]}>Изучить материалы</Text>
             </LinearGradient>
           </TouchableOpacity>
           <TouchableOpacity onPress={this.handleUserStudyClick}>
@@ -46,7 +46,7 @@ export default class CourseScreen extends React.Component<{
               colors={[Colors.dark.darkGray, Colors.dark.lightGray]}
               style={styles.shadow}
             >
-              <Text style={{color: 'white', fontSize: 25}}>Пройти тестирование</Text>
+              <Text style={[Fonts.base, styles.textStyle]}>Пройти тестирование</Text>
             </LinearGradient>
             </View>
           </TouchableOpacity>
@@ -63,10 +63,14 @@ const styles = StyleSheet.create({
     paddingTop: 40,
     padding: 20,
   },
-  titleText: {
-    color: Colors.light.tabIconDefault,
-    marginBottom: 15,
+  textStyle: {
+    fontSize: 25
+  },
+  heading: {
+    color: Colors.dark.text,
     fontSize: 30,
+    marginBottom: 30,
+    textAlign: 'center',
   },
   materials: {
     borderStyle:'solid',
@@ -81,12 +85,13 @@ const styles = StyleSheet.create({
     borderRadius: 32,
     marginBottom: 32,
     padding: 36,
-    width: 'auto',
-    height: 240,
     flex: 1,
     shadowOffset: {
       width: 0,
       height: 8,
     },
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });
