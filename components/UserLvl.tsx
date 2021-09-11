@@ -18,18 +18,26 @@ export class UserLvl extends React.PureComponent {
   render() {
     return (
       <View style={styles.container}>
-        <View style={{ flex: 1 }}>
+        <View style={[styles.block]}>
           <UserCoinsText />
           <LottieView
+            style={{ width: 60, height: 60 }}
             ref={(animation) => {
               this.animation = animation;
             }}
             source={require("../assets/coinsAnimation.json")}
           />
         </View>
-        <View style={{ flex: 1 }}>
+        <View style={styles.block}>
           <UserLvlText />
           <LottieView
+            loop={false}
+            // onAnimationFinish={() => {
+            //     setTimeout(() => {
+            //         this.animation2.play()
+            //     }, 6000)
+            // }}
+            style={{ width: 60, height: 60 }}
             ref={(animation) => {
               this.animation2 = animation;
             }}
@@ -43,7 +51,15 @@ export class UserLvl extends React.PureComponent {
 
 const styles = StyleSheet.create({
   container: {
-      flexDirection: 'row',
-    height: 200,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginBottom: 48,
+  },
+  block: {
+    flex: 1,
+    marginHorizontal: 16,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "flex-start",
   },
 });

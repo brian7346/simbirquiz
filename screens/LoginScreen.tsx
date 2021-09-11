@@ -1,13 +1,13 @@
-import * as React from "react"
+import * as React from "react";
 import { Button, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 import Colors from "../constants/Colors";
-import LottieView from "lottie-react-native"
+import LottieView from "lottie-react-native";
 import { PureComponent, useEffect, useRef } from "react";
 import Fonts from "../constants/Fonts";
-import { LinearGradient } from "expo-linear-gradient"
-import { FontAwesome } from "@expo/vector-icons"
-import { SSButton } from "../components/SimbirButton"
+import { LinearGradient } from "expo-linear-gradient";
+import { FontAwesome } from "@expo/vector-icons";
+import { SSButton } from "../components/SimbirButton";
 
 export default class LoginScreen extends PureComponent {
   private animation: any;
@@ -18,7 +18,7 @@ export default class LoginScreen extends PureComponent {
 
   handleNavigate = () => {
     // this.props.navigation.navigate("Quiz")
-    this.props.navigation.navigate("CardStack")
+    this.props.navigation.navigate("CardStack");
 
     // this.props.navigation.navigate('CardStack')
   };
@@ -28,7 +28,7 @@ export default class LoginScreen extends PureComponent {
       <View style={styles.container}>
         <View style={styles.welcomeContainer}>
           <Text style={[Fonts.base, { fontSize: 32 }]}>Добро пожаловать</Text>
-          <Text style={[Fonts.bold, { fontSize: 42 }]}>Андрей,</Text>
+          <Text style={[Fonts.bold, { fontSize: 42 }]}>Илья,</Text>
           <Text style={[Fonts.base]}>готов узнать что то новое?</Text>
         </View>
 
@@ -44,13 +44,14 @@ export default class LoginScreen extends PureComponent {
           source={require("../assets/wavesAnimation.json")}
         />
         <SSButton
+          gradient={[Colors.dark.darkGray, Colors.dark.lightGray]}
           onPress={this.handleNavigate}
           icon="code"
           text="Приступим"
           styles={styles.btn}
         />
       </View>
-    )
+    );
   }
 }
 

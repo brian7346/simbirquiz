@@ -3,8 +3,13 @@ module.exports = {
     "jest/globals": true,
   },
   root: true,
-  extends: ["@react-native-community"],
-  plugins: ["jest"],
+  extends: [
+    "@react-native-community",
+    "prettier/@typescript-eslint",
+    "plugin:prettier/recommended",
+  ],
+  plugins: ["@typescript-eslint", "react", "prettier", "jest"],
+  parser: "@typescript-eslint/parser",
   rules: {
     quotes: [2, "double", { avoidEscape: true }],
     semi: ["error", "last"],
@@ -13,10 +18,19 @@ module.exports = {
     "react/require-default-props": ["error"],
     "react/default-props-match-prop-types": ["error"],
     "react/sort-prop-types": ["error"],
+    prettier: [
+      "error",
+      {
+        singleQuote: true,
+        trailingComma: "all",
+        arrowParens: "avoid",
+        endOfLine: "auto",
+      },
+    ],
   },
   settings: {
     "import/resolver": {
       "babel-module": {},
     },
   },
-}
+};
