@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-enum Roles {
+export enum Roles {
   ADMIN = 'ADMIN',
   MENTOR = 'MENTOR',
   INTERN = 'INTERN'
