@@ -9,7 +9,7 @@ import filter from "lodash/filter";
 export default function QuizResult({
   route: { params },
 }: RootStackScreenProps<"NotFound">) {
-  console.log();
+  // console.log();
 
   const getSuccess = (): boolean => {
     const qtCount = params.results.length;
