@@ -3,6 +3,7 @@ import React, { useEffect } from "react";
 import LoginScreen from "../../screens/LoginScreen";
 import ShopScreen from "../../screens/ShopScreen";
 import CardStackScreen from "../../screens/CardStackScreen";
+import AchievementsScreen from "../../screens/AchievementsScreen";
 import QuizNavigator from "./QuizNavigator";
 import InternsNavigator from "./InternsNavigator";
 import { useSelector } from "react-redux";
@@ -45,6 +46,11 @@ export default function MainNavigator() {
       <Stack.Screen
         name="Interns"
         component={InternsNavigator}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="Achievements"
+        component={AchievementsScreen}
         options={{ headerShown: false }}
       />
     </Stack.Navigator>

@@ -21,6 +21,10 @@ export default class CardStackScreen extends React.Component<{
     this.props.navigation.navigate("Shop");
   };
 
+  handleAchievementsNavigate = () => {
+    this.props.navigation.navigate("Achievements");
+  };
+
   render() {
     return (
       <SafeAreaView style={styles.container}>
@@ -29,7 +33,7 @@ export default class CardStackScreen extends React.Component<{
           <UserLvl handleShopNavigate={this.handleShopNavigate}/>
           <CardsCarousel navigation={this.props.navigation} />
 
-          <UserAchievements />
+          <UserAchievements handleAchievementsNavigate={this.handleAchievementsNavigate}/>
         </ScrollView>
       </SafeAreaView>
     );

@@ -1,5 +1,5 @@
 import React from "react";
-import {View, StyleSheet, Text, Image} from "react-native";
+import {View, StyleSheet, Text, Image, TouchableOpacity} from "react-native";
 import Fonts from "../constants/Fonts";
 import Colors from "../constants/Colors";
 import { LinearGradient } from "expo-linear-gradient";
@@ -19,35 +19,37 @@ export class UserAchievements extends React.Component {
 
   render() {
     return (
-      <LinearGradient
-        style={styles.container}
-        colors={[ Colors.dark.darkGray, Colors.dark.lightGray,]}
-        start={{ x: 0, y: 0.7 }}
-        end={{ x: 2, y: 1 }}
-      >
-        <Text style={[Fonts.base, {marginBottom: 16}]}>
-          Мои достижения
-        </Text>
-        <View style={styles.achievements}>
-          {[1,2,3,4,].map((item, key) => {
-            console.log(`../assets/images/${key}.png`)
-            return (
-                <View key={key}  style={styles.achievement}>
-                  <Image style={styles.achievementIcon} source={icons[item]}/>
-                </View>
-            )
-          } )}
-        </View>
-        <View style={styles.achievements}>
-          {[5,6,7,8].map((item, key) => {
-            return (
-                <View key={key}  style={styles.achievement}>
-                  <Image style={styles.achievementIcon} source={icons[item]}/>
-                </View>
-            )
-          } )}
-        </View>
-      </LinearGradient>
+      <TouchableOpacity onPress={this.props.handleAchievementsNavigate}>
+        <LinearGradient
+          style={styles.container}
+          colors={[ Colors.dark.darkGray, Colors.dark.lightGray,]}
+          start={{ x: 0, y: 0.7 }}
+          end={{ x: 2, y: 1 }}
+        >
+          <Text style={[Fonts.base, {marginBottom: 16}]}>
+            Мои достижения
+          </Text>
+          <View style={styles.achievements}>
+            {[1,2,3,4,].map((item, key) => {
+              console.log(`../assets/images/${key}.png`)
+              return (
+                  <View key={key}  style={styles.achievement}>
+                    <Image style={styles.achievementIcon} source={icons[item]}/>
+                  </View>
+              )
+            } )}
+          </View>
+          <View style={styles.achievements}>
+            {[5,6,7,8].map((item, key) => {
+              return (
+                  <View key={key}  style={styles.achievement}>
+                    <Image style={styles.achievementIcon} source={icons[item]}/>
+                  </View>
+              )
+            } )}
+          </View>
+        </LinearGradient>
+      </TouchableOpacity>
     );
   }
 }
