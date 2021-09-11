@@ -3,7 +3,7 @@ import { StyleSheet, TouchableOpacity } from "react-native";
 import Colors from "../constants/Colors";
 import LottieView from "lottie-react-native";
 
-export class UserStudy extends React.PureComponent<{onClick: () => void}> {
+export class UserStudy extends React.PureComponent<{ onClick: () => void }> {
   private animation: any;
 
   componentDidMount() {
@@ -11,11 +11,12 @@ export class UserStudy extends React.PureComponent<{onClick: () => void}> {
   }
 
   handleNavigate = () => {
-    this.props.onClick()
+    this.props.onClick();
   };
+
   render() {
     return (
-      <TouchableOpacity style={{ flex: 1 }} onPress={ this.handleNavigate }>
+      <TouchableOpacity style={{ flex: 1 }} onPress={this.handleNavigate}>
         <LottieView
           ref={(animation) => {
             this.animation = animation;
