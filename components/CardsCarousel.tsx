@@ -1,7 +1,8 @@
 import React from 'react';
 import { StyleSheet, View, Text, SafeAreaView, TouchableOpacity, ImageBackground, ShadowPropTypesIOS } from 'react-native';
 import Colors from "../constants/Colors";
-import Carousel from 'react-native-snap-carousel';
+import Carousel, {Pagination} from 'react-native-snap-carousel';
+import {LinearGradient} from "expo-linear-gradient";
 
 export  class CardsCarousel extends React.Component{
 
@@ -12,34 +13,44 @@ export  class CardsCarousel extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-          activeIndex:4}};
+          activeIndex:0}};
 
 
-    _renderItem({item,index}){
+    _renderItem({item, index}){
         return (
-            <View style={{width: 250, height: 250, backgroundColor: Colors.dark.second, borderColor: '#202333', borderStyle: 'solid', borderWidth: 5, }}>
-                <ImageBackground source={{uri: item.uri}} resizeMode="cover" style={{ flex: 1, justifyContent: "center" }} >
+            <>
+            <LinearGradient colors={[ Colors.dark.darkGray, Colors.dark.lightGray,]} style={styles.shadow}>
+                <ImageBackground source={{uri: item.uri}} resizeMode="contain" style={{ flex: 1, justifyContent: "center"}} >
+            </ImageBackground>
+            </LinearGradient>
                 <View style={{
-                    backgroundColor: Colors.dark.purple,
-                    opacity: .8,
-                    borderRadius: 15,
-                    height: 170,
-                    width: 200,
+                    position: 'absolute',
+                    left: -120,
+                    bottom: 0,
+                    backgroundColor: '#303065',
+                    opacity: .9,
+                    borderRadius: 32,
+                    height: 160,
+                    width: 220,
                     padding: 40,
                     marginLeft: 100,
-                    marginTop: 25, 
-                    }}>
+                    marginTop: 25,
+                }}>
                     <Text style={{fontSize: 30, color: 'white'}}>{item.title}</Text>
                     <Text style={{color: 'white'}}>{item.text}</Text>
                 </View>
-            </ImageBackground>
-            </View>
+            </>
         )
     }
 
 
     render (){
         const carouselItems = [
+            {
+                title: 'React Native',
+                text: 'Text 5',
+                uri: 'https://cdn4.iconfinder.com/data/icons/logos-3/600/React.js_logo-512.png'
+            },
             {
                 title:'Kotlin',
                 text: 'Text 1',
@@ -60,26 +71,53 @@ export  class CardsCarousel extends React.Component{
                 text: 'Text 4',
                 uri: 'https://cdn4.iconfinder.com/data/icons/logos-3/456/nodejs-new-pantone-black-512.png'
             },
-            {
-                title: 'React Native',
-                text: 'Text 5',
-                uri: 'https://cdn4.iconfinder.com/data/icons/logos-3/600/React.js_logo-512.png'
-            }];
+           ];
 
        return (
-        <SafeAreaView style={{flex: 1, backgroundColor:'transparent', paddingTop: 40 }}>
-            <View style={{ flex: 1, flexDirection:'row',  justifyContent: 'center',}}>
+            <View style={{ flex: 1, flexDirection:'column',  width: '100%', justifyContent: 'center'}}>
                 <Carousel
+                    onSnapToItem={(index) => this.setState({ activeIndex: index }) }
                     layout={"stack"}
-                    layoutCardOffset={20}
+                    layoutCardOffset={12}
                     ref={ref => this.carousel = ref}
                     data={carouselItems}
-                    sliderWidth={300}
+                    sliderWidth={380}
                     itemWidth={300}
                     renderItem={this._renderItem}
-                    firstItem={4}
-                     />  
+                    firstItem={0}
+                     />
+                <Pagination
+                    dotsLength={carouselItems.length}
+                    activeDotIndex={this.state.activeIndex}
+                    dotStyle={{
+                        width: 10,
+                        height: 10,
+                        borderRadius: 5,
+                        marginHorizontal: 8,
+                        backgroundColor: 'rgba(255, 255, 255, 0.92)'
+                    }}
+                    inactiveDotOpacity={0.4}
+                    inactiveDotScale={0.6}
+                />
             </View>
-        </SafeAreaView>
     )}
 }
+
+const styles = StyleSheet.create({
+    shadow: {
+        marginHorizontal: 16,
+        borderRadius: 32,
+        marginBottom: 32,
+        padding: 36,
+        width: 280,
+        height: 240,
+        flex: 1,
+        shadowOffset: {
+            width: 0,
+            height: 8,
+        },
+        shadowColor: 'red',
+        shadowOpacity: 0.46,
+        shadowRadius: 11.14,
+        elevation: 17,}
+});

@@ -13,7 +13,7 @@ interface ButtonProps {
     gradient?: string[],
     styles: ViewStyle
 }
-export const SSButton = ({text, icon, onPress, styles, gradient = ['#61ADE3', '#6B4ADD']}: ButtonProps) => {
+export const SSButton = ({text, icon, onPress, styles,  textStyle, gradient = ['#61ADE3', '#6B4ADD']}: ButtonProps) => {
     return (
         <TouchableOpacity activeOpacity={.8} onPress={onPress}>
             <LinearGradient
@@ -27,7 +27,7 @@ export const SSButton = ({text, icon, onPress, styles, gradient = ['#61ADE3', '#
                     style={{ marginBottom: -3 }}
                     color={ Colors.dark.text}
                     name={icon} />
-                <Text style={[Fonts.bold, {color: Colors.dark.text, fontSize: 24}]}>
+                <Text style={[Fonts.bold, {color: Colors.dark.text, fontSize: 24}, textStyle]}>
                     {text}
                 </Text>
             </LinearGradient>

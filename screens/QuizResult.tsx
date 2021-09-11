@@ -1,18 +1,36 @@
 import * as React from "react"
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native"
+import {Alert, StyleSheet, Text, TouchableOpacity, View} from "react-native"
 
 import { RootStackScreenProps } from "../types"
 import Colors from "../constants/Colors";
 import map from 'lodash/map';
 import filter from "lodash/filter"
 export default function QuizResult({
-  route,
+  route: {params},
 }: RootStackScreenProps<"NotFound">) {
+
+  console.log()
+
+
   const getSuccess = (): boolean => {
-    map(route, (result: any) => {
-      console.log(result)
-    });
-    return true
+
+    const qtCount = params.results.length
+    const qtCountRight = filter(params.results, ['isRight', true]).length
+    const {awards} = params
+    if (qtCountRight > qtCount / 2) {
+      map(awards, (award) => {
+        if (award.conditions == qtCountRight) {
+          Alert.alert(`Вы заработали ${award.coins} монет`)
+        }
+
+      })
+
+      return true
+
+    } else {
+      return false
+    }
+
   };
   return (
     <View style={styles.container}>

@@ -1,6 +1,6 @@
 import React from "react";
 import { CardsCarousel } from "../components/CardsCarousel"
-import { StyleSheet, Text, SafeAreaView, Dimensions, View } from "react-native";
+import {StyleSheet, Text, SafeAreaView, Dimensions, View, ScrollView} from "react-native";
 import { UserAchivements } from "../components/UserAchivements";
 import { UserHeader } from "../components/UserHeader";
 import { UserLvl } from "../components/UserLvl";
@@ -17,15 +17,17 @@ export default class CardStackScreen extends React.Component<{
   render() {
     return (
       <SafeAreaView style={styles.container}>
-        <View style={{ flex: 2 }}>
-          <UserHeader />
+        <UserHeader />
+        <ScrollView>
           <UserLvl />
-          <UserAchivements />
           <CardsCarousel />
-        </View>
-        <View style={{ flex: 1, borderRadius: 10, overflow: "hidden" }}>
-          <UserStudy onClick={this.handleUserStudyClick} />
-        </View>
+
+          <UserAchivements />
+
+        </ScrollView>
+        {/*<View style={{ flex: 1, borderRadius: 10, overflow: "hidden" }}>*/}
+        {/*  <UserStudy onClick={this.handleUserStudyClick} />*/}
+        {/*</View>*/}
       </SafeAreaView>
     );
   }
@@ -34,6 +36,7 @@ export default class CardStackScreen extends React.Component<{
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    padding: 32,
     backgroundColor: Colors.dark.background,
   },
 });

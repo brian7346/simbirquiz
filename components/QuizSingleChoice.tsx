@@ -2,6 +2,7 @@ import React from "react";
 import { TextStyle } from "react-native";
 import { View, Text, Dimensions, Animated, ViewStyle } from "react-native";
 import { AppButton, OppButton } from "./Buttons";
+import { SSButton } from "./SimbirButton";
 const { width } = Dimensions.get("window");
 type QuizSingleChoiceProps = {
     containerStyle: ViewStyle;
@@ -141,7 +142,7 @@ const QuizSingleChoice = ({
                     {
                         flexDirection: "row",
                         alignItems: "center",
-                        paddingBottom: 15,
+                        marginBottom: 60,
                         alignSelf: "center",
                         width: width - 50,
                         justifyContent: "space-between",
@@ -155,6 +156,7 @@ const QuizSingleChoice = ({
                     }}
                     disabled={isFirst}
                     testID="prev"
+                    isNext={false}
                     containerStyle={{
                         width: "40%",
                         backgroundColor: "#F00",
@@ -167,6 +169,9 @@ const QuizSingleChoice = ({
                     onPress={() => {
                         onNext();
                     }}
+                    isNext={true}
+                    isLast={isLast}
+
                     testID="next"
                     disabled={nextDisabled}
                     containerStyle={{
@@ -230,6 +235,7 @@ function Question({
                         <QuestionItem
                             key={i}
                             text={text}
+                            selected={select}
                             responseTextStyle={
                                 select ? selectedResponseTextStyle : responseTextStyle
                             }
@@ -258,20 +264,28 @@ function QuestionItem({
                           disabled,
                           responseStyle,
                           responseTextStyle,
+                            selected
                       }: QuestionItemProps) {
     return (
         <View style={{ marginVertical: 15 }}>
-            <AppButton
-                title={text}
-                disabled={disabled}
-                testID={text}
-                containerStyle={{ backgroundColor: "#000", ...responseStyle }}
-                width={"100%"}
+            <SSButton
+                gradient={selected ? ['#0551b6', '#0551b6'] : undefined}
+                textStyle={responseTextStyle}
                 onPress={onPress}
-                titleStyle={{ textTransform: "capitalize", ...responseTextStyle }}
-                backgroundColor={"#000"}
-                titleColor={"#FFF"}
-            />
+                text={text}
+                styles={responseStyle}/>
+
+            {/*<AppButton*/}
+            {/*    title={text}*/}
+            {/*    disabled={disabled}*/}
+            {/*    testID={text}*/}
+            {/*    containerStyle={{ backgroundColor: "#000", ...responseStyle }}*/}
+            {/*    width={"100%"}*/}
+            {/*    onPress={onPress}*/}
+            {/*    titleStyle={{ ...responseTextStyle }}*/}
+            {/*    backgroundColor={"#000"}*/}
+            {/*    titleColor={"#FFF"}*/}
+            {/*/>*/}
         </View>
     );
 }
