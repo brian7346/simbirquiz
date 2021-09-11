@@ -17,10 +17,6 @@ import Colors from "../constants/Colors";
 export default class CardStackScreen extends React.Component<{
   navigation: { navigate: (screen: string) => void };
 }> {
-  handleUserStudyClick = () => {
-    this.props.navigation.navigate("Quiz");
-  };
-
   handleShopNavigate = () => {
     this.props.navigation.navigate("Shop");
   };
