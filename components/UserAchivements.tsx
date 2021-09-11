@@ -4,10 +4,18 @@ import { View, StyleSheet, Text } from "react-native";
 import Fonts from "../constants/Fonts";
 import Colors from "../constants/Colors";
 import { LinearGradient } from "expo-linear-gradient";
+import { BackgroundPlate } from "./BackgroundPlate";
+import LottieView from "lottie-react-native";
 
-export const UserAchivements = () => {
-  return (
-    <View style={styles.container}>
+export class UserAchivements extends React.Component {
+  private animation: any;
+
+  componentDidMount() {
+    this.animation.play();
+  }
+
+  render() {
+    return (
       <LinearGradient
         style={styles.container}
         colors={[Colors.dark.purple, "#000000"]}
@@ -25,10 +33,21 @@ export const UserAchivements = () => {
             </View>
           ))}
         </View>
+        <View style={{ position: 'absolute'}}>
+          <LottieView
+            ref={(animation) => {
+              this.animation = animation;
+            }}
+            style={{
+              width: 50,
+            }}
+            source={require("../assets/fireAnimation.json")}
+          />
+        </View>
       </LinearGradient>
-    </View>
-  );
-};
+    );
+  }
+}
 
 const styles = StyleSheet.create({
   icon: {
@@ -40,10 +59,9 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     borderRadius: 10,
     justifyContent: "space-around",
-    width: "100%",
-    alignItems: "center",
-    paddingHorizontal: 20,
     paddingVertical: 30,
+    alignItems: "center",
+    marginHorizontal: 10,
   },
   title: {
     color: Colors.dark.text,

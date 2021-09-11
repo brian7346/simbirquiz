@@ -1,4 +1,6 @@
 node_modules/
+yarn.lock
+
 .expo/
 npm-debug.*
 *.jks
@@ -8,6 +10,6 @@ npm-debug.*
 *.mobileprovision
 *.orig.*
 web-build/
-
 # macOS
 .DS_Store
+/.eslintcache
