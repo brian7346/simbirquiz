@@ -31,7 +31,7 @@ const InternItem = ({ intern }) => {
       <Text style={[Fonts.base, { fontSize: 24 }]}>{intern.name}</Text>
       <View style={styles.internLvl}>
         <View style={styles.lvl}>
-          <Text style={[Fonts.base, { fontSize: 21 }]}>{intern.lvl}</Text>
+          <Text style={[Fonts.base, { fontSize: 22 }]}>{intern.lvl}</Text>
         </View>
         <Text style={[Fonts.bold, { fontSize: 16 }]}>уровень</Text>
       </View>
@@ -81,7 +81,7 @@ const styles = StyleSheet.create({
     marginVertical: 40,
   },
   title: {
-    fontSize: 32,
+    fontSize: 24,
   },
   avatar: {
     width: 50,

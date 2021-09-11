@@ -97,7 +97,7 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.dark.background,
   },
   title: {
-    fontSize: 32,
+    fontSize: 24,
   },
   courses: {
     marginVertical: 20,

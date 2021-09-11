@@ -10,7 +10,12 @@ const QuizScreen = () => {
     awards: [
       {
         coins: 5,
-        // achievement: 515,
+        achievementId: 1,
+        conditions: 1,
+      },
+      {
+        coins: 5,
+        achievementId: 2,
         conditions: 1,
       },
       {
@@ -18,7 +23,6 @@ const QuizScreen = () => {
         coins: 2,
       },
     ],
-
     questions: [
       {
         question:

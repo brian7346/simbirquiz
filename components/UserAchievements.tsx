@@ -4,6 +4,17 @@ import Fonts from "../constants/Fonts";
 import Colors from "../constants/Colors";
 import { LinearGradient } from "expo-linear-gradient";
 
+const icons = {
+  1: require(`../assets/images/1.png`),
+  2: require(`../assets/images/2.png`),
+  3: require(`../assets/images/3.png`),
+  4: require(`../assets/images/4.png`),
+  5: require(`../assets/images/5.png`),
+  6: require(`../assets/images/6.png`),
+  7: require(`../assets/images/7.png`),
+  8: require(`../assets/images/8.png`),
+}
+
 export class UserAchievements extends React.Component {
 
   render() {
@@ -18,18 +29,23 @@ export class UserAchievements extends React.Component {
           Мои достижения
         </Text>
         <View style={styles.achievements}>
-          {["heart", "key", "filter", "trophy"].map((item, key) => (
-            <View key={key}  style={styles.achievement}>
-              <Image style={styles.achievementIcon} source={require('../assets/images/4.png')}/>
-            </View>
-          ))}
+          {[1,2,3,4,].map((item, key) => {
+            console.log(`../assets/images/${key}.png`)
+            return (
+                <View key={key}  style={styles.achievement}>
+                  <Image style={styles.achievementIcon} source={icons[item]}/>
+                </View>
+            )
+          } )}
         </View>
         <View style={styles.achievements}>
-          {["heart", "key", "filter", "trophy"].map((item, key) => (
-            <View key={key} style={styles.achievement}>
-              <Image style={styles.achievementIcon} source={require('../assets/images/4.png')}/>
-            </View>
-          ))}
+          {[5,6,7,8].map((item, key) => {
+            return (
+                <View key={key}  style={styles.achievement}>
+                  <Image style={styles.achievementIcon} source={icons[item]}/>
+                </View>
+            )
+          } )}
         </View>
       </LinearGradient>
     );

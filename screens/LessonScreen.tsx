@@ -77,7 +77,7 @@ const styles = StyleSheet.create({
   },
   textStyle: {
     color: Colors.light.tabIconDefault,
-    fontSize: 18,
+    fontSize: 16,
     lineHeight: 24,
   },
   materials: {
@@ -88,7 +88,7 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     marginBottom: 10,
     color: Colors.light.tabIconDefault,
-    fontSize: 25,
+    fontSize: 24,
     padding: 15,
   },
   shadow: {
