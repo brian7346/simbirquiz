@@ -17,7 +17,6 @@ export class UserAchievements extends React.Component {
         <Text style={[Fonts.base, {marginBottom: 16}]}>
           Мои достижения
         </Text>
-        {/*<Text style={[Fonts.base, styles.title]}>Достижения</Text>*/}
         <View style={styles.achievements}>
           {["heart", "key", "filter", "trophy"].map((item, key) => (
             <View key={key}  style={styles.achievement}>
