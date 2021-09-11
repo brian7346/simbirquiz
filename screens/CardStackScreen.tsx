@@ -21,19 +21,20 @@ export default class CardStackScreen extends React.Component<{
     this.props.navigation.navigate("Quiz");
   };
 
+  handleShopNavigate = () => {
+    this.props.navigation.navigate("Shop");
+  };
+
   render() {
     return (
       <SafeAreaView style={styles.container}>
         <UserHeader />
         <ScrollView>
-          <UserLvl />
+          <UserLvl handleShopNavigate={this.handleShopNavigate}/>
           <CardsCarousel navigation={this.props.navigation} />
 
           <UserAchievements />
         </ScrollView>
-        {/*<View style={{ flex: 1, borderRadius: 10, overflow: "hidden" }}>*/}
-        {/*  <UserStudy onClick={this.handleUserStudyClick} />*/}
-        {/*</View>*/}
       </SafeAreaView>
     );
   }

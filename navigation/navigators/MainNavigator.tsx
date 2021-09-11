@@ -1,6 +1,7 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import * as React from "react";
 import LoginScreen from "../../screens/LoginScreen";
+import ShopScreen from "../../screens/ShopScreen";
 import CardStackScreen from "../../screens/CardStackScreen";
 import QuizNavigator from "./QuizNavigator";
 
@@ -22,6 +23,11 @@ export default function MainNavigator() {
       <Stack.Screen
         name="Quiz"
         component={QuizNavigator}
+        options={{ headerShown: false }}
+      />
+       <Stack.Screen
+        name="Shop"
+        component={ShopScreen}
         options={{ headerShown: false }}
       />
     </Stack.Navigator>

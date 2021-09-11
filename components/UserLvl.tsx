@@ -19,7 +19,7 @@ export class UserLvl extends React.PureComponent {
     return (
       <View style={styles.container}>
         <View style={[styles.block]}>
-          <UserCoinsText />
+          <UserCoinsText handleShopNavigate={this.props.handleShopNavigate}/>
           <LottieView
             style={{ width: 60, height: 60 }}
             ref={(animation) => {
