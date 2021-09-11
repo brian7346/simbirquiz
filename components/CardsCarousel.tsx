@@ -4,11 +4,18 @@ import Colors from "../constants/Colors";
 import Carousel, {Pagination} from 'react-native-snap-carousel';
 import {LinearGradient} from "expo-linear-gradient";
 
-export  class CardsCarousel extends React.Component{
+export class CardsCarousel extends React.Component{
+
+    nav
 
     handleNavigate = () => {
-        //this.props.navigation.navigate('Login');
+        console.log(111)
+        this.props.navigation.navigate("Quiz");
     };
+
+    init = () => {
+        this.nav = () => this.props.navigation.navigate("Quiz");
+    }
 
     constructor(props){
         super(props);
@@ -16,30 +23,31 @@ export  class CardsCarousel extends React.Component{
           activeIndex:0}};
 
 
-    _renderItem({item, index}){
+    _renderItem = ({item, index}) => {
         return (
-            <>
-            <LinearGradient colors={[ Colors.dark.darkGray, Colors.dark.lightGray,]} style={styles.shadow}>
-                <ImageBackground source={{uri: item.uri}} resizeMode="contain" style={{ flex: 1, justifyContent: "center"}} >
-            </ImageBackground>
-            </LinearGradient>
-                <View style={{
-                    position: 'absolute',
-                    left: -120,
-                    bottom: 0,
-                    backgroundColor: '#303065',
-                    opacity: .9,
-                    borderRadius: 32,
-                    height: 160,
-                    width: 220,
-                    padding: 40,
-                    marginLeft: 100,
-                    marginTop: 25,
-                }}>
-                    <Text style={{fontSize: 30, color: 'white'}}>{item.title}</Text>
-                    <Text style={{color: 'white'}}>{item.text}</Text>
-                </View>
-            </>
+            <TouchableOpacity onPress={this.handleNavigate} activeOpacity={1}>
+                <LinearGradient colors={[ Colors.dark.darkGray, Colors.dark.lightGray,]} style={styles.shadow}>
+                    <ImageBackground source={{uri: item.uri}} resizeMode="contain" style={{ flex: 1, justifyContent: "center"}} >
+                </ImageBackground>
+                </LinearGradient>
+
+                    <View style={{
+                        position: 'absolute',
+                        left: -120,
+                        bottom: 0,
+                        backgroundColor: '#303065',
+                        opacity: .9,
+                        borderRadius: 32,
+                        height: 160,
+                        width: 220,
+                        padding: 40,
+                        marginLeft: 100,
+                        marginTop: 25,
+                    }}>
+                        <Text style={{fontSize: 30, color: 'white'}}>{item.title}</Text>
+                        <Text style={{color: 'white'}}>{item.text}</Text>
+                    </View>
+            </TouchableOpacity>
         )
     }
 
@@ -82,6 +90,7 @@ export  class CardsCarousel extends React.Component{
                     ref={ref => this.carousel = ref}
                     data={carouselItems}
                     sliderWidth={380}
+                    onLayout={this.init}
                     itemWidth={300}
                     renderItem={this._renderItem}
                     firstItem={0}

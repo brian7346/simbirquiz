@@ -28,7 +28,7 @@ export default class LoginScreen extends PureComponent {
       <View style={styles.container}>
         <View style={styles.welcomeContainer}>
           <Text style={[Fonts.base, { fontSize: 32 }]}>Добро пожаловать</Text>
-          <Text style={[Fonts.bold, { fontSize: 42 }]}>Андрей,</Text>
+          <Text style={[Fonts.bold, { fontSize: 42 }]}>Илья,</Text>
           <Text style={[Fonts.base]}>готов узнать что то новое?</Text>
         </View>
 
@@ -44,6 +44,7 @@ export default class LoginScreen extends PureComponent {
           source={require("../assets/wavesAnimation.json")}
         />
         <SSButton
+            gradient={[ Colors.dark.darkGray, Colors.dark.lightGray,]}
           onPress={this.handleNavigate}
           icon="code"
           text="Приступим"

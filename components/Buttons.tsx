@@ -56,6 +56,7 @@ export const OppButton = ({
                               titleStyle,
                               containerStyle,
                                 isNext,
+    onPress,
                               isLast,
                               ...rest
                           }: ButtonProps2) => {
@@ -65,6 +66,8 @@ export const OppButton = ({
     return (
         <>
             {isLast ? <Button
+                title={'Завершить'}
+                onPress={onPress}
                 buttonStyle={{
                     backgroundColor,
                     paddingVertical: 12,
@@ -89,7 +92,6 @@ export const OppButton = ({
                         backgroundColor: "transparent",
                         letterSpacing: 2,
                     },
-                    titleStyle,
                 ]}
             />
             :   <TouchableOpacity             {...rest}

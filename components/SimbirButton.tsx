@@ -15,7 +15,7 @@ interface ButtonProps {
 }
 export const SSButton = ({text, icon, onPress, styles,  textStyle, gradient = ['#61ADE3', '#6B4ADD']}: ButtonProps) => {
     return (
-        <TouchableOpacity activeOpacity={.8} onPress={onPress}>
+        <TouchableOpacity activeOpacity={.95} onPress={onPress}>
             <LinearGradient
                 colors={gradient}
                 style={styles}

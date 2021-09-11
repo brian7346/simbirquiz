@@ -1,7 +1,7 @@
 import React from "react";
 import { CardsCarousel } from "../components/CardsCarousel"
 import {StyleSheet, Text, SafeAreaView, Dimensions, View, ScrollView} from "react-native";
-import { UserAchivements } from "../components/UserAchivements";
+import { UserAchievements } from "../components/UserAchievements";
 import { UserHeader } from "../components/UserHeader";
 import { UserLvl } from "../components/UserLvl";
 import { UserStudy } from "../components/UserStudy";
@@ -20,9 +20,9 @@ export default class CardStackScreen extends React.Component<{
         <UserHeader />
         <ScrollView>
           <UserLvl />
-          <CardsCarousel />
+          <CardsCarousel navigation={this.props.navigation}/>
 
-          <UserAchivements />
+          <UserAchievements />
 
         </ScrollView>
         {/*<View style={{ flex: 1, borderRadius: 10, overflow: "hidden" }}>*/}
