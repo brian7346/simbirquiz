@@ -21,9 +21,8 @@ export class UserLvl extends React.PureComponent {
         <View style={[styles.block]}>
           <UserCoinsText />
           <LottieView
-              style={{width: 60, height: 60}}
-
-              ref={(animation) => {
+            style={{ width: 60, height: 60 }}
+            ref={(animation) => {
               this.animation = animation;
             }}
             source={require("../assets/coinsAnimation.json")}
@@ -32,13 +31,13 @@ export class UserLvl extends React.PureComponent {
         <View style={styles.block}>
           <UserLvlText />
           <LottieView
-              loop={false}
-              // onAnimationFinish={() => {
-              //     setTimeout(() => {
-              //         this.animation2.play()
-              //     }, 6000)
-              // }}
-              style={{width: 60, height: 60}}
+            loop={false}
+            // onAnimationFinish={() => {
+            //     setTimeout(() => {
+            //         this.animation2.play()
+            //     }, 6000)
+            // }}
+            style={{ width: 60, height: 60 }}
             ref={(animation) => {
               this.animation2 = animation;
             }}
@@ -52,15 +51,15 @@ export class UserLvl extends React.PureComponent {
 
 const styles = StyleSheet.create({
   container: {
-      flexDirection: 'row',
-      justifyContent: 'space-between',
-      marginBottom: 48,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginBottom: 48,
   },
-    block: {
-      flex: 1,
-        marginHorizontal: 16,
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'flex-start' }
-
+  block: {
+    flex: 1,
+    marginHorizontal: 16,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "flex-start",
+  },
 });

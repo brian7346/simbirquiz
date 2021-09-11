@@ -3,6 +3,8 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import React, { useEffect} from 'react';
 import LoginScreen from "../../screens/LoginScreen";
 import CardStackScreen from "../../screens/CardStackScreen";
+import CourseScreen from "../../screens/CourseScreen";
+import EducationScreen from "../../screens/EducationScreen";
 import QuizNavigator from "./QuizNavigator";
 import InternsNavigator from "./InternsNavigator";
 import { useSelector } from 'react-redux';

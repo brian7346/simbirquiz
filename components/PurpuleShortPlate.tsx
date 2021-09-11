@@ -2,10 +2,13 @@ import React from "react";
 import { View, StyleSheet,TouchableHighlight } from "react-native";
 import Colors from "../constants/Colors";
 
-export const PurpuleShortPlate: React.FC<{onPress: () => void}> = ({ children, onPress = () => null }) => {
+export const PurpuleShortPlate: React.FC<{ onPress: () => void }> = ({
+  children,
+  onPress = () => null,
+}) => {
   return (
     <TouchableHighlight onPress={onPress} style={styles.plate}>
-      { children }
+      {children}
     </TouchableHighlight>
   );
 };

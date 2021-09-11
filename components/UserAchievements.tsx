@@ -1,13 +1,10 @@
-import { FontAwesome } from "@expo/vector-icons";
 import React from "react";
-import { View, StyleSheet, Text } from "react-native";
+import {View, StyleSheet, Text, Image} from "react-native";
 import Fonts from "../constants/Fonts";
 import Colors from "../constants/Colors";
 import { LinearGradient } from "expo-linear-gradient";
-import { BackgroundPlate } from "./BackgroundPlate";
-import LottieView from "lottie-react-native";
 
-export class UserAchivements extends React.Component {
+export class UserAchievements extends React.Component {
 
   render() {
     return (
@@ -20,18 +17,17 @@ export class UserAchivements extends React.Component {
         <Text style={[Fonts.base, {marginBottom: 16}]}>
           Мои достижения
         </Text>
-        {/*<Text style={[Fonts.base, styles.title]}>Достижения</Text>*/}
         <View style={styles.achievements}>
-          {["heart", "key", "filter", "trophy"].map((item) => (
-            <View style={styles.achievement}>
-              <FontAwesome size={25} name={item} color="white" />
+          {["heart", "key", "filter", "trophy"].map((item, key) => (
+            <View key={key}  style={styles.achievement}>
+              <Image style={styles.achievementIcon} source={require('../assets/images/4.png')}/>
             </View>
           ))}
         </View>
         <View style={styles.achievements}>
-          {["heart", "key", "filter", "trophy"].map((item) => (
-            <View style={styles.achievement}>
-              <FontAwesome size={25} name={item} color="white" />
+          {["heart", "key", "filter", "trophy"].map((item, key) => (
+            <View key={key} style={styles.achievement}>
+              <Image style={styles.achievementIcon} source={require('../assets/images/4.png')}/>
             </View>
           ))}
         </View>
@@ -57,6 +53,11 @@ const styles = StyleSheet.create({
     color: Colors.dark.text,
     fontSize: 24,
   },
+  achievementIcon: {
+    width: 50,
+    height: 50,
+    margin: 10
+  },
   achievements: {
     width: '100%',
     flexDirection: "row",
@@ -64,11 +65,11 @@ const styles = StyleSheet.create({
     marginBottom: 16,
   },
   achievement: {
-    width: 60,
-    height: 60,
+    width: 70,
+    height: 70,
     backgroundColor: "rgba(0,0,0, 0.5)",
     borderRadius: 17,
-    padding: 7,
-    marginLeft: 7,
+    // padding: 7,
+    // marginLeft: 7,
   },
 });
