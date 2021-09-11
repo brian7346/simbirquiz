@@ -98,7 +98,7 @@ const styles = StyleSheet.create({
   },
   heading: {
     color: Colors.dark.text,
-    fontSize: 30,
+    fontSize: 24,
     textAlign: "center",
   },
   materials: {
@@ -107,7 +107,7 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     marginBottom: 10,
     color: Colors.light.tabIconDefault,
-    fontSize: 25,
+    fontSize: 24,
     padding: 15,
   },
   shadow: {
