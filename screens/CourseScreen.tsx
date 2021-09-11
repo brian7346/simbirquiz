@@ -1,54 +1,83 @@
 import React from "react";
-import { StyleSheet, Text, SafeAreaView, Dimensions, View, TouchableOpacity } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  SafeAreaView,
+  Dimensions,
+  View,
+  TouchableOpacity,
+} from "react-native";
 import Colors from "../constants/Colors";
-import {FontAwesome} from "@expo/vector-icons";
+import { FontAwesome } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
-import Fonts from '../constants/Fonts';
+import Fonts from "../constants/Fonts";
 
-export default class CourseScreen extends React.Component<{
-  navigation: { navigate: (screen: string) => void };
-}> {
+export default class CourseScreen extends React.Component {
+  componentDidMount() {
+    const { setOptions } = this.props.navigation;
+    console.log("1", setOptions);
+    // this.props.navigation.setOptions(this.props.route.params)
+    setOptions({ title: "Updated!" });
+  }
+
   handleUserStudyClick = () => {
-    this.props.navigation.navigate("Quiz");
+    this.props.navigation.navigate("QuizQuestions");
   };
 
   goToEducation = () => {
     this.props.navigation.navigate("Education");
-  }
+  };
 
   goBack = () => {
     this.props.navigation.navigate("CardStack");
-  }
+  };
 
   render() {
     return (
       <SafeAreaView style={styles.container}>
-        <TouchableOpacity onPress={this.goBack}>
+        <TouchableOpacity
+          style={{
+            marginLeft: 16,
+          }}
+          onPress={this.goBack}
+        >
           <FontAwesome
-              size={25}
-              style={{ marginBottom: -3 }}
-              color={ Colors.dark.text}
-              name='chevron-left' />
+            size={25}
+            style={{ marginBottom: -3 }}
+            color={Colors.dark.text}
+            name="chevron-left"
+          />
         </TouchableOpacity>
         <View style={{ flex: 2, marginTop: 20 }}>
-          <Text style={[Fonts.base, styles.heading]}>Приступим?</Text>
+          <Text style={[Fonts.base, { fontSize: 16, textAlign: "center" }]}>
+            Добро пожаловать на курс по
+          </Text>
+          <Text style={[Fonts.base, styles.heading]}>
+            {this.props.route.params.title}
+          </Text>
           <TouchableOpacity onPress={this.goToEducation}>
             <LinearGradient
-            colors={[Colors.dark.darkGray, Colors.dark.lightGray]}
-            style={styles.shadow}
-          >
-              <Text style={[Fonts.base, styles.textStyle]}>Изучить материалы</Text>
+              style={styles.shadow}
+              colors={[Colors.dark.darkGray, Colors.dark.lightGray]}
+              start={{ x: 0, y: 0.7 }}
+              end={{ x: 2, y: 1 }}
+            >
+              <Text style={[Fonts.base, styles.textStyle]}>
+                Изучить материалы
+              </Text>
             </LinearGradient>
           </TouchableOpacity>
           <TouchableOpacity onPress={this.handleUserStudyClick}>
-            <View>
             <LinearGradient
               colors={[Colors.dark.darkGray, Colors.dark.lightGray]}
               style={styles.shadow}
+              start={{ x: 0, y: 0.7 }}
+              end={{ x: 2, y: 1 }}
             >
-              <Text style={[Fonts.base, styles.textStyle]}>Пройти тестирование</Text>
+              <Text style={[Fonts.base, styles.textStyle]}>
+                Пройти тестирование
+              </Text>
             </LinearGradient>
-            </View>
           </TouchableOpacity>
         </View>
       </SafeAreaView>
@@ -61,37 +90,30 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: Colors.dark.background,
     paddingTop: 40,
-    padding: 20,
+    padding: 16,
   },
   textStyle: {
-    fontSize: 25
+    fontSize: 16,
+    textAlign: "center",
   },
   heading: {
     color: Colors.dark.text,
     fontSize: 30,
-    marginBottom: 30,
-    textAlign: 'center',
+    textAlign: "center",
   },
   materials: {
-    borderStyle:'solid',
+    borderStyle: "solid",
     backgroundColor: Colors.dark.purple,
     borderRadius: 15,
     marginBottom: 10,
     color: Colors.light.tabIconDefault,
     fontSize: 25,
-    padding: 15
+    padding: 15,
   },
   shadow: {
-    borderRadius: 32,
-    marginBottom: 32,
-    padding: 36,
-    flex: 1,
-    shadowOffset: {
-      width: 0,
-      height: 8,
-    },
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
+    margin: 20,
+    borderRadius: 24,
+    marginBottom: 16,
+    padding: 12,
   },
 });

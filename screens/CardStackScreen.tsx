@@ -17,8 +17,8 @@ import Colors from "../constants/Colors";
 export default class CardStackScreen extends React.Component<{
   navigation: { navigate: (screen: string) => void };
 }> {
-  handleUserStudyClick = () => {
-    this.props.navigation.navigate("Quiz");
+  handleShopNavigate = () => {
+    this.props.navigation.navigate("Shop");
   };
 
   render() {
@@ -26,14 +26,11 @@ export default class CardStackScreen extends React.Component<{
       <SafeAreaView style={styles.container}>
         <UserHeader />
         <ScrollView>
-          <UserLvl />
+          <UserLvl handleShopNavigate={this.handleShopNavigate}/>
           <CardsCarousel navigation={this.props.navigation} />
 
           <UserAchievements />
         </ScrollView>
-        {/*<View style={{ flex: 1, borderRadius: 10, overflow: "hidden" }}>*/}
-        {/*  <UserStudy onClick={this.handleUserStudyClick} />*/}
-        {/*</View>*/}
       </SafeAreaView>
     );
   }
