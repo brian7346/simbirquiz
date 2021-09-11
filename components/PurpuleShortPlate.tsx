@@ -1,5 +1,6 @@
 import React from "react";
 import { View, StyleSheet,TouchableHighlight } from "react-native";
+import Colors from "../constants/Colors";
 
 export const PurpuleShortPlate: React.FC<{onPress: () => void}> = ({ children, onPress = () => null }) => {
   return (
@@ -11,7 +12,7 @@ export const PurpuleShortPlate: React.FC<{onPress: () => void}> = ({ children, o
 
 const styles = StyleSheet.create({
   plate: {
-    backgroundColor: "#021B79",
+    backgroundColor: Colors.dark.darkGray,
     borderRadius: 10,
     height: 150,
     width: "30%",
