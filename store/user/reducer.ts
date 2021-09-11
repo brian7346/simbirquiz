@@ -1,16 +1,22 @@
-import { createSlice, configureStore } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit'
+
+enum Roles {
+  ADMIN = 'ADMIN',
+  MENTOR = 'MENTOR',
+  INTERN = 'INTERN'
+}
 
 export const userSlice = createSlice({
   name: 'user',
   initialState: {
     name: 'Илья',
     avatar: '',
-    achievements: [],
     coins: 100,
     experience: 0,
     lvl: 1,
-    coursesCompleted: 0,
-    coursesCompleteList: []
+    role: Roles.INTERN as Roles,
+    coursesCompleted: 5,
+    coursesCompleteList: [1,2,3]
   },
   reducers: {
     setUser: (state, action) => {

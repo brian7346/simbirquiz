@@ -1,6 +1,7 @@
 import React from "react";
 import { StyleSheet, Text, SafeAreaView, Dimensions, View } from "react-native";
 import { UserAchivements } from "../components/UserAchivements";
+import { UserCourses } from "../components/UserCourses";
 import { UserHeader } from "../components/UserHeader";
 import { UserLvl } from "../components/UserLvl";
 import { UserStudy } from "../components/UserStudy";
@@ -20,6 +21,7 @@ export default class CardStackScreen extends React.Component<{
           <UserHeader />
           <UserLvl />
           <UserAchivements />
+          <UserCourses />
         </View>
         <View style={{ flex: 1, borderRadius: 10, overflow: "hidden" }}>
           <UserStudy onClick={this.handleUserStudyClick} />
