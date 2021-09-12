@@ -68,13 +68,14 @@ export default function QuizResult({
   const getSuccess = (): boolean => {
     if (qtCountRight > qtCount / 2) {
       map(awards, (award) => {
-        if (award.conditions == qtCountRight) {
-          dispatch(
+        dispatch(
             addCoins({
               coins: award.coins,
             })
-          );
-        }
+        );
+        // if (award.conditions == qtCountRight) {
+        //
+        // }
       });
 
       return true;
