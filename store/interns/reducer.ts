@@ -93,8 +93,6 @@ export const internsSlice = createSlice({
       user.questions = []
 
       user.mistakes = user.mistakes.filter(item => item.name!== payload.courseName)
-      console.log(user)
-
       state = state.filter(item => item.id !== payload.userId)
       state.push(user)
     }

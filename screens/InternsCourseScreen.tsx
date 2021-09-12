@@ -55,7 +55,6 @@ const InternsCourseScreen = ({ route, navigation }) => {
       {data.length && (
         <View style={styles.courses}>
           <TouchableOpacity style={styles.refresh} onPress={() => {
-            console.log('intern.id', intern.id)
             dispatch(refreshInternCourse({
               userId: intern.id,
               courseName
