@@ -31,7 +31,6 @@ export class UserAchievements extends React.Component {
           </Text>
           <View style={styles.achievements}>
             {[1,2,3,4,].map((item, key) => {
-              console.log(`../assets/images/${key}.png`)
               return (
                   <View key={key}  style={styles.achievement}>
                     <Image style={styles.achievementIcon} source={icons[item]}/>

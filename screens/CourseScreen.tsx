@@ -15,8 +15,6 @@ import Fonts from "../constants/Fonts";
 export default class CourseScreen extends React.Component {
   componentDidMount() {
     const { setOptions } = this.props.navigation;
-    console.log("1", setOptions);
-    // this.props.navigation.setOptions(this.props.route.params)
     setOptions({ title: "Updated!" });
   }
 

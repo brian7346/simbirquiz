@@ -22,6 +22,10 @@ export const userSlice = createSlice({
     setUser: (state, action) => {
       state.name = action.payload
     },
+    order: (state, action) => {
+      console.log(action)
+      state.couns = action.payload
+    }
   }
 })
 
