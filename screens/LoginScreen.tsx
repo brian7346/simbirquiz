@@ -27,9 +27,9 @@ export default class LoginScreen extends PureComponent {
     return (
       <View style={styles.container}>
         <View style={styles.welcomeContainer}>
-          <Text style={[Fonts.base, { fontSize: 32 }]}>Добро пожаловать</Text>
-          <Text style={[Fonts.bold, { fontSize: 42 }]}>Илья,</Text>
-          <Text style={[Fonts.base]}>готов узнать что то новое?</Text>
+          <Text style={[Fonts.base, { fontSize: 32 }]}>Добро пожаловать,</Text>
+          <Text style={[Fonts.bold, { fontSize: 42 }]}>Илья!</Text>
+          <Text style={[Fonts.base]}>Готов узнать что-то новое?</Text>
         </View>
 
         <LottieView
