@@ -25,7 +25,7 @@ const InternItem = ({ intern }) => {
       <Image
         style={styles.avatar}
         source={{
-          uri: "https://cdn3.iconfinder.com/data/icons/avatars-round-flat/33/man5-512.png",
+          uri: intern.avatar,
         }}
       />
       <Text style={[Fonts.base, { fontSize: 24 }]}>{intern.name}</Text>
@@ -64,6 +64,7 @@ const InternsLitsScreen = () => {
       </View>
       <FlatList
         data={interns}
+        keyExtractor={item => item.name}
         ItemSeparatorComponent={() => <View style={{ height: 30 }} />}
         renderItem={({ item }) => <InternItem intern={item} />}
       />

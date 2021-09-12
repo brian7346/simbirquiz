@@ -22,17 +22,20 @@ const DATA = [
     name: "React Native",
     done: true,
     mistakes: 2,
+    id: 1,
   },
   {
     name: "Swift",
     done: false,
     mistakes: 3,
+    id: 2,
   },
 ];
 
 const InternScreen = ({ route, navigation }) => {
   const { intern } = route.params;
   const user = useSelector((state) => state.user);
+  const int = useSelector((state) => state.interns.find(i => i.id === intern.id));
 
   return (
     <SafeAreaView style={styles.container}>
@@ -49,21 +52,20 @@ const InternScreen = ({ route, navigation }) => {
         <Image
           style={styles.avatar}
           source={{
-            uri: "https://cdn3.iconfinder.com/data/icons/avatars-round-flat/33/man5-512.png",
+            uri: intern.avatar,
           }}
         />
         <Text style={[Fonts.base, styles.title]}>{intern.name}</Text>
         <View style={styles.courses}>
+        { !int.mistakes.length && <Text style={[Fonts.bold,{ fontSize: 32, textAlign: 'center'}]}>У стажера нету курсов с ошибками</Text> }
           <FlatList
-            data={DATA}
+            data={int.mistakes}
+            keyExtractor={(item) => item.name}
             ItemSeparatorComponent={() => <View style={{ height: 20 }} />}
             renderItem={({ item, index }) => (
               <CardPlate
                 onPress={() =>
-                  navigation.navigate("InternsCours", {
-                    name: item.name,
-                    internId: intern.id,
-                  })
+                  navigation.navigate("InternsCours", { intern, courseName: item.name })
                 }
                 key={index}
               >

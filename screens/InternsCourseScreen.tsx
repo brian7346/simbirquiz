@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Colors from "../constants/Colors";
 import {
   FlatList,
@@ -9,13 +9,14 @@ import {
   SafeAreaView,
   Image,
 } from "react-native";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { CardPlate } from "../components/PurpulePlate";
 import Fonts from "../constants/Fonts";
 import { useNavigation } from "@react-navigation/native";
 import { FontAwesome } from "@expo/vector-icons";
 import { PurpuleShortPlate } from "../components/PurpuleShortPlate";
 import { UserCourses } from "../components/UserCourses";
+import { refreshInternCourse } from "../store/interns/reducer";
 
 const DATA = [
   {
@@ -33,9 +34,10 @@ const DATA = [
 ];
 
 const InternsCourseScreen = ({ route, navigation }) => {
-  const { name, internId } = route.params;
-  const intern = useSelector((state) => state.interns.filter(intern => intern.id === internId));
-
+  const { courseName, intern } = route.params;
+  const dispatch = useDispatch();
+  const data = intern.questions.filter((item) => item.name === courseName);
+  
   return (
     <SafeAreaView style={styles.container}>
       <TouchableOpacity onPress={() => navigation.goBack()}>
@@ -48,28 +50,38 @@ const InternsCourseScreen = ({ route, navigation }) => {
       </TouchableOpacity>
       <Text style={[Fonts.base, styles.title]}>
         Где допустил ошибки в теме
-        <Text style={[Fonts.bold, styles.title]}> {name}</Text>
+        <Text style={[Fonts.bold, styles.title]}> {courseName}</Text>
       </Text>
-      <View style={styles.courses}>
-        <TouchableOpacity style={styles.refresh}>
-          <FontAwesome
-            name="refresh"
-            size={25}
-            color="lightgreen"
-            style={{ marginHorizontal: 15 }}
+      {data.length && (
+        <View style={styles.courses}>
+          <TouchableOpacity style={styles.refresh} onPress={() => {
+            console.log('intern.id', intern.id)
+            dispatch(refreshInternCourse({
+              userId: intern.id,
+              courseName
+            }));
+            navigation.goBack()
+          }}>
+            <FontAwesome
+              name="refresh"
+              size={25}
+              color="lightgreen"
+              style={{ marginHorizontal: 15 }}
+            />
+            <Text style={[Fonts.bold, styles.title]}>Обнулить результат</Text>
+          </TouchableOpacity>
+          <FlatList
+            data={data}
+            keyExtractor={(item) => item.desc}
+            ItemSeparatorComponent={() => <View style={{ height: 20 }} />}
+            renderItem={({ item, index }) => (
+              <CardPlate onPress={() => null} key={index}>
+                <Text style={[Fonts.base, styles.coursTitle]}>{item.desc}</Text>
+              </CardPlate>
+            )}
           />
-          <Text style={[Fonts.bold, styles.title]}>Обнулить результат</Text>
-        </TouchableOpacity>
-        <FlatList
-          data={DATA}
-          ItemSeparatorComponent={() => <View style={{ height: 20 }} />}
-          renderItem={({ item, index }) => (
-            <CardPlate onPress={() => null} key={index}>
-              <Text style={[Fonts.base, styles.coursTitle]}>{item.desc}</Text>
-            </CardPlate>
-          )}
-        />
-      </View>
+        </View>
+      )}
     </SafeAreaView>
   );
 };
@@ -96,13 +108,13 @@ const styles = StyleSheet.create({
   },
   refresh: {
     marginBottom: 30,
-    flexDirection: 'row',
-    alignItems:'center',
+    flexDirection: "row",
+    alignItems: "center",
     backgroundColor: Colors.dark.purple,
-    justifyContent: 'center',
+    justifyContent: "center",
     marginHorizontal: 10,
-    borderRadius: 20
-  }
+    borderRadius: 20,
+  },
 });
 
 export default InternsCourseScreen;

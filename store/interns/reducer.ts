@@ -7,97 +7,99 @@ export const internsSlice = createSlice({
       id: 1,
       name: "Илья Васильев",
       lvl: 3,
-      mistakes: [
+      questions: [
         {
-          name: 'Node JS',
+          name: "Swift",
+          id: 1,
           desc: "Язык JavaScript является подвидом языка Java – верно?React Native",
         },
         {
-          name: 'React Native',
+          name: "Swift",
+          id: 2,
           desc: "Что получится, если сложить true + false?",
         },
         {
-          name: 'Java',
+          name: "Swift",
+          id: 3,
           desc: "Чему равно 2 && 1 && null && 0 && undefined",
         },
-        {
-          name: 'Java',
-          desc: "Что делает оператор ===",
-        },
       ],
-      avatar: 'https://cdn3.iconfinder.com/data/icons/avatars-round-flat/33/man5-512.png',
-    },
-    {
-      id: 2,
-      name: "Вадим Магов",
-      lvl: 3,
       mistakes: [
         {
-          desc: "Язык JavaScript является подвидом языка Java – верно?React Native",
-        },
-        {
-          desc: "Что получится, если сложить true + false?",
-        },
-        {
-          desc: "Чему равно 2 && 1 && null && 0 && undefined",
-        },
-        {
-          desc: "Что делает оператор ===",
+          name: "Swift",
+          done: false,
+          mistakes: 3,
+          id: 1,
         },
       ],
-      avatar: 'https://cdn3.iconfinder.com/data/icons/avatars-round-flat/33/man5-512.png',
-    },
-    {
-      id: 3,
-      name: "Сергей Новый",
-      lvl: 3,
-      mistakes: [
-        {
-          name: 'React Native',
-          desc: "Язык JavaScript является подвидом языка Java – верно?React Native",
-        },
-        {
-          name: 'React Native',
-          desc: "Что получится, если сложить true + false?",
-        },
-        {
-          name: 'React Native',
-          desc: "Чему равно 2 && 1 && null && 0 && undefined",
-        },
-        {
-          name: 'Swift',
-          desc: "Что делает оператор ===",
-        },
-      ],
-      avatar: 'https://cdn3.iconfinder.com/data/icons/avatars-round-flat/33/man5-512.png',
+      avatar:
+        "https://cdn3.iconfinder.com/data/icons/avatars-round-flat/33/man5-512.png",
     },
     {
       id: 5,
       name: "Андрей Сергеев",
-      lvl: 3,
-      mistakes: [
+      lvl: 7,
+      questions: [
         {
+          name: "React Native",
+          id: 1,
           desc: "Язык JavaScript является подвидом языка Java – верно?React Native",
         },
         {
+          name: "React Native",
+          id: 2,
           desc: "Что получится, если сложить true + false?",
         },
         {
-          desc: "Чему равно 2 && 1 && null && 0 && undefined",
+          name: "Swift",
+          id: 3,
+          desc: "Язык JavaScript является подвидом языка Java – верно?React Native",
         },
         {
-          desc: "Что делает оператор ===",
+          name: "Swift",
+          id: 4,
+          desc: "Что получится, если сложить true + false?",
+        },
+        {
+          name: "Swift",
+          id: 5,
+          desc: "Чему равно 2 && 1 && null && 0 && undefined",
         },
       ],
-      avatar: 'https://cdn3.iconfinder.com/data/icons/avatars-round-flat/33/man5-512.png',
+      mistakes: [
+        {
+          name: "React Native",
+          done: true,
+          mistakes: 2,
+          id: 1,
+        },
+        {
+          name: "Swift",
+          done: false,
+          mistakes: 3,
+          id: 2,
+        },
+      ],
+      avatar:
+        "https://www.shareicon.net/data/512x512/2016/05/24/770117_people_512x512.png",
     },
   ],
   reducers: {
     setInterns: (state, action) => {
       state = action.payload;
     },
+    refreshInternCourse: (state, {  payload }) => {
+      const user = state.find(item => item.id === payload.userId);
+      user.questions = []
+
+      user.mistakes = user.mistakes.filter(item => item.name!== payload.courseName)
+      console.log(user)
+
+      state = state.filter(item => item.id !== payload.userId)
+      state.push(user)
+    }
   },
 });
 
-export const { setInterns } = internsSlice.actions;
+export const { setInterns, refreshInternCourse } = internsSlice.actions;
 export default internsSlice.reducer;
