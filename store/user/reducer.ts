@@ -23,7 +23,6 @@ export const userSlice = createSlice({
       state.name = action.payload
     },
     order: (state, action) => {
-      console.log(action)
       state.coins = action.payload
     },
     setCourseComplete: (state, action) => {
