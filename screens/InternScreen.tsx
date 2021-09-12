@@ -35,7 +35,9 @@ const DATA = [
 const InternScreen = ({ route, navigation }) => {
   const { intern } = route.params;
   const user = useSelector((state) => state.user);
-  const int = useSelector((state) => state.interns.find(i => i.id === intern.id));
+  const int = useSelector((state) =>
+    state.interns.find((i) => i.id === intern.id)
+  );
 
   return (
     <SafeAreaView style={styles.container}>
@@ -56,8 +58,19 @@ const InternScreen = ({ route, navigation }) => {
           }}
         />
         <Text style={[Fonts.base, styles.title]}>{intern.name}</Text>
+        </View>
         <View style={styles.courses}>
-        { !int.mistakes.length && <Text style={[Fonts.bold,{ fontSize: 32, textAlign: 'center'}]}>У стажера нету курсов с ошибками</Text> }
+          {!int.mistakes.length && (
+            <Text style={[Fonts.bold, { fontSize: 32, textAlign: "center" }]}>
+              У стажера нету курсов с ошибками
+            </Text>
+          )}
+
+          {int.mistakes.length > 0 && (
+            <Text style={[Fonts.bold, { fontSize: 32, textAlign: "center", marginBottom: 40 }]}>
+              Курсы, в которых стажёр допустил ошибки
+            </Text>
+          )}
           <FlatList
             data={int.mistakes}
             keyExtractor={(item) => item.name}
@@ -65,7 +78,10 @@ const InternScreen = ({ route, navigation }) => {
             renderItem={({ item, index }) => (
               <CardPlate
                 onPress={() =>
-                  navigation.navigate("InternsCours", { intern, courseName: item.name })
+                  navigation.navigate("InternsCours", {
+                    intern,
+                    courseName: item.name,
+                  })
                 }
                 key={index}
               >
@@ -87,7 +103,6 @@ const InternScreen = ({ route, navigation }) => {
               </CardPlate>
             )}
           />
-        </View>
       </View>
     </SafeAreaView>
   );
@@ -117,7 +132,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   avatarArea: {
-    height: 500,
+    height: 200,
     alignItems: "center",
     justifyContent: "center",
   },
