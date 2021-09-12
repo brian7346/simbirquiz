@@ -1,14 +1,14 @@
 import { configureStore } from '@reduxjs/toolkit';
 import userReducer from './user/reducer';
 import coursesReducer from './courses/reducer';
-import achievmentsReducer from './achievments/reducer';
+import achievementsReducer from './achievements/reducer';
 import internsReducer from './interns/reducer';
 
 export const store = configureStore({
   reducer: {
     user: userReducer,
     courses: coursesReducer,
-    achievments: achievmentsReducer,
+    achievements: achievementsReducer,
     interns: internsReducer,
   }
 })
