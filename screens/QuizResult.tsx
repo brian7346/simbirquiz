@@ -17,6 +17,8 @@ import Fonts from "../constants/Fonts";
 import { FlatList } from "react-native-gesture-handler";
 import { useNavigation } from "@react-navigation/native";
 import { LinearGradient } from "expo-linear-gradient";
+import { useDispatch } from "react-redux";
+import { setCourseComplete } from "../store/user/reducer";
 
 export default function QuizResult({
   route: { params },
@@ -25,10 +27,18 @@ export default function QuizResult({
   const { awards } = params;
   const qtCount = params.results.length;
   const qtCountRight = filter(params.results, ["isRight", true]).length;
+  const dispatch = useDispatch();
 
   const goBack = () => {
     navigation.goBack();
   };
+
+  React.useEffect(() => {
+    dispatch(setCourseComplete({
+      name: 'React Native',
+      rightCount: qtCountRight
+    }))
+  }, [])
 
   const handleNavigateMain = () => {
     navigation.navigate('CardStack');
