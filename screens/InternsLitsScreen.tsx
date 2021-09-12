@@ -58,7 +58,7 @@ const InternsLitsScreen = () => {
           {greeting}, {user.name}
         </Text>
         <Text style={[Fonts.base, styles.title]}>
-          вот список ваших{" "}
+          вот список Ваших{" "}
           <Text style={[Fonts.bold, styles.title]}>стажёров</Text>
         </Text>
       </View>

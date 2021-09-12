@@ -3,6 +3,8 @@ import { TextStyle } from "react-native";
 import { View, Text, Dimensions, Animated, ViewStyle } from "react-native";
 import { AppButton, OppButton } from "./Buttons";
 import { SSButton } from "./SimbirButton";
+import Colors from "../constants/Colors";
+import Fonts from "../constants/Fonts";
 
 const { width } = Dimensions.get("window");
 type QuizSingleChoiceProps = {
@@ -152,9 +154,7 @@ const QuizSingleChoice = ({
         ]}
       >
         <OppButton
-          onPress={() => {
-            onPrev();
-          }}
+          handlePrev={onPrev}
           disabled={isFirst}
           testID="prev"
           isNext={false}
@@ -167,9 +167,10 @@ const QuizSingleChoice = ({
           titleStyle={[{ color: "#FFF" }, prevButtonTextStyle]}
         />
         <OppButton
-          onPress={() => {
-            onNext();
-          }}
+            onPress={() => {
+              onNext();
+            }}
+          handleNext={onNext}
           isNext={true}
           isLast={isLast}
           testID="next"
@@ -222,8 +223,8 @@ function Question({
     <View
       style={{ marginVertical: 80, width: width - 50, alignItems: "center" }}
     >
-      <Text style={[{ textAlign: "center", fontSize: 18 }, questionTitleStyle]}>
-        {item.question}
+      <Text style={[Fonts.base, { textAlign: "center", fontSize: 16 }]}>
+        {item.question.replace(/[&\/\\#,+()$~%.'":*?<>{}]/g,'')}
       </Text>
       <View style={{ marginVertical: 15, width: "100%" }}>
         {responses.map((r, i) => {
@@ -268,24 +269,13 @@ function QuestionItem({
   return (
     <View style={{ marginVertical: 15 }}>
       <SSButton
-        gradient={selected ? ["#0551b6", "#0551b6"] : undefined}
+        gradient={!selected ? [Colors.dark.darkGray, Colors.dark.lightGray]: undefined}
         textStyle={responseTextStyle}
         onPress={onPress}
         text={text}
         styles={responseStyle}
       />
 
-      {/*<AppButton*/}
-      {/*    title={text}*/}
-      {/*    disabled={disabled}*/}
-      {/*    testID={text}*/}
-      {/*    containerStyle={{ backgroundColor: "#000", ...responseStyle }}*/}
-      {/*    width={"100%"}*/}
-      {/*    onPress={onPress}*/}
-      {/*    titleStyle={{ ...responseTextStyle }}*/}
-      {/*    backgroundColor={"#000"}*/}
-      {/*    titleColor={"#FFF"}*/}
-      {/*/>*/}
     </View>
   );
 }

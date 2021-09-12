@@ -8,10 +8,9 @@ import {
   View,
   ScrollView,
 } from "react-native";
-import { UserAchievements } from "../components/UserAchievements";
+import UserAchievements from "../components/UserAchievements";
 import { UserHeader } from "../components/UserHeader";
 import { UserLvl } from "../components/UserLvl";
-import { UserStudy } from "../components/UserStudy";
 import Colors from "../constants/Colors";
 
 export default class CardStackScreen extends React.Component<{
@@ -32,7 +31,6 @@ export default class CardStackScreen extends React.Component<{
         <ScrollView>
           <UserLvl handleShopNavigate={this.handleShopNavigate}/>
           <CardsCarousel navigation={this.props.navigation} />
-
           <UserAchievements handleAchievementsNavigate={this.handleAchievementsNavigate}/>
         </ScrollView>
       </SafeAreaView>

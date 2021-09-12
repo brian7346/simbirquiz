@@ -14,7 +14,7 @@ export const userSlice = createSlice({
     coins: 100,
     experience: 0,
     lvl: 1,
-    role: Roles.MENTOR as Roles,
+    role: Roles.INTERN as Roles,
     coursesCompleted: 5,
     coursesCompleteList: []
   },
@@ -23,14 +23,17 @@ export const userSlice = createSlice({
       state.name = action.payload
     },
     order: (state, action) => {
-      console.log(action)
-      state.coins = action.payload
+      state.coins -= action.payload.coins
+    },
+    addCoins: (state, action) => {
+      state.coins += action.payload.coins
     },
     setCourseComplete: (state, action) => {
       state.coursesCompleteList.push(action.payload as never)
     }
+
   }
 })
 
-export const { setUser, setCourseComplete, order } = userSlice.actions;
+export const { setUser, setCourseComplete, order, addCoins } = userSlice.actions;
 export default userSlice.reducer;

@@ -12,6 +12,7 @@ import { FontAwesome } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
 import Fonts from "../constants/Fonts";
 import { FlatList } from "react-native-gesture-handler";
+import { connect } from "react-redux";
 
 const DATA = [
   {
@@ -64,15 +65,15 @@ const DATA = [
   },
 ];
 
-export default class AchievementsScreen extends React.Component {
+class AchievementsScreen extends React.Component {
   goBack = () => {
     this.props.navigation.goBack();
   };
 
-  renderItem = ({ item: { icon, title, subtitle } }) => (
+  renderItem = ({ item: { icon, name, description, unlocked } }) => (
     <LinearGradient
       colors={[Colors.dark.darkGray, Colors.dark.lightGray]}
-      style={styles.shadow}
+      style={[styles.shadow, !unlocked && styles.locked]}
       start={{ x: 0, y: 0.7 }}
       end={{ x: 2, y: 1 }}
     >
@@ -81,8 +82,8 @@ export default class AchievementsScreen extends React.Component {
           <Image style={styles.achievementIcon} source={icon} />
         </View>
         <View style={styles.achievementText}>
-          <Text style={[Fonts.base, styles.textTytle]}>{title}</Text>
-          <Text style={[Fonts.base, styles.textSubtitle]}>{subtitle}</Text>
+          <Text style={[Fonts.base, styles.textTytle]}>{name}</Text>
+          <Text style={[Fonts.base, styles.textSubtitle]}>{description}</Text>
         </View>
       </View>
     </LinearGradient>
@@ -109,7 +110,7 @@ export default class AchievementsScreen extends React.Component {
             Мои достижения
           </Text>
           <FlatList
-            data={DATA}
+            data={this.props?.achievements}
             renderItem={this.renderItem}
             keyExtractor={(item) => item.id}
           />
@@ -119,6 +120,14 @@ export default class AchievementsScreen extends React.Component {
   }
 }
 
+const mapStateToProps = (state) => {
+  return {
+    achievements: state.achievements || [],
+  };
+};
+
+export default connect(mapStateToProps, null)(AchievementsScreen);
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -126,13 +135,14 @@ const styles = StyleSheet.create({
     paddingTop: 40,
     padding: 16,
   },
+  locked: {
+    opacity: .3
+  },
   textTytle: {
     fontSize: 16,
-    textAlign: "center",
   },
   textSubtitle: {
     fontSize: 12,
-    textAlign: "left",
   },
   viewStyle: {
     flex: 2,

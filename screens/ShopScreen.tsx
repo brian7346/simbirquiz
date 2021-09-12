@@ -19,7 +19,8 @@ import { useNavigation } from "@react-navigation/native";
 import { useState } from "react";
 import { find, map, indexOf } from "lodash";
 import {useDispatch} from "react-redux";
-import {setAchievements} from "../store/achievements/reducer";
+import {order} from "../store/user/reducer";
+import { useSelector } from "react-redux";
 
 const shopData = [
   {
@@ -49,19 +50,24 @@ export default function ShopScreen({
   const [selectedGoods, setSelectedGoods] = useState([]);
   const navigation = useNavigation();
   const dispatch = useDispatch();
+  const user = useSelector((state) => state.user);
+
   const goBack = () => {
     navigation.goBack();
   };
 
   const handleOrder = () => {
-    // Alert.alert("Успешно!", "Мы свяжемся с Вами в течении нескольких дней");
     let count = 0
     map(selectedGoods, (id) => {
       count += find(shopData, ["id", id]).price
     });
-    // dispatch(order(1));
-    setAchievements({3: 44},3)
-    // navigation.goBack();
+    if (user.coins > count) {
+      Alert.alert("Успешно!", "Мы свяжемся с Вами в течении нескольких дней");
+      dispatch(order({coins: count}));
+    } else {
+      Alert.alert('Внимание!', 'Недостаточно монет')
+    }
+    navigation.goBack();
 
   };
 

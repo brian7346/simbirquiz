@@ -69,31 +69,31 @@ export class CardsCarousel extends React.Component {
       {
         id: 1,
         title: "React Native",
-        text: "Text 5",
+        text: "Приступить",
         uri: "https://cdn4.iconfinder.com/data/icons/logos-3/600/React.js_logo-512.png",
       },
       {
         id: 1,
         title: "Kotlin",
-        text: "Text 1",
+        text: "Приступить",
         uri: "https://cdn4.iconfinder.com/data/icons/logos-brands-5/24/kotlin-512.png",
       },
       {
         id: 1,
         title: "Swift",
-        text: "Text 2",
+        text: "Приступить",
         uri: "https://cdn4.iconfinder.com/data/icons/logos-and-brands/512/332_Swift_logo-512.png",
       },
       {
         id: 1,
         title: "Java",
-        text: "Text 3",
+        text: "Приступить",
         uri: "https://cdn4.iconfinder.com/data/icons/logos-and-brands/512/181_Java_logo_logos-512.png",
       },
       {
         id: 1,
         title: "NodeJs",
-        text: "Text 4",
+        text: "Приступить",
         uri: "https://cdn4.iconfinder.com/data/icons/logos-3/456/nodejs-new-pantone-black-512.png",
       },
     ];

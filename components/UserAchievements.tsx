@@ -3,6 +3,7 @@ import {View, StyleSheet, Text, Image, TouchableOpacity} from "react-native";
 import Fonts from "../constants/Fonts";
 import Colors from "../constants/Colors";
 import { LinearGradient } from "expo-linear-gradient";
+import { connect } from "react-redux";
 
 const icons = {
   1: require(`../assets/images/1.png`),
@@ -15,9 +16,12 @@ const icons = {
   8: require(`../assets/images/8.png`),
 }
 
-export class UserAchievements extends React.Component {
+class UserAchievements extends React.Component {
 
   render() {
+
+    const {achievements} = this.props
+
     return (
       <TouchableOpacity onPress={this.props.handleAchievementsNavigate}>
         <LinearGradient
@@ -30,21 +34,17 @@ export class UserAchievements extends React.Component {
             Мои достижения
           </Text>
           <View style={styles.achievements}>
-            {[1,2,3,4,].map((item, key) => {
-              return (
-                  <View key={key}  style={styles.achievement}>
-                    <Image style={styles.achievementIcon} source={icons[item]}/>
-                  </View>
-              )
-            } )}
-          </View>
-          <View style={styles.achievements}>
-            {[5,6,7,8].map((item, key) => {
-              return (
-                  <View key={key}  style={styles.achievement}>
-                    <Image style={styles.achievementIcon} source={icons[item]}/>
-                  </View>
-              )
+            {achievements.map((item, key) => {
+              if (item.unlocked) {
+                return (
+                    <View key={key}  style={styles.achievement}>
+                      <Image style={styles.achievementIcon} source={item.icon}/>
+                    </View>
+                )
+              } else {
+                return null
+              }
+
             } )}
           </View>
         </LinearGradient>
@@ -52,6 +52,14 @@ export class UserAchievements extends React.Component {
     );
   }
 }
+const mapStateToProps = (state) => {
+  return ({
+    achievements: state.achievements,
+  })
+}
+
+
+export default connect(mapStateToProps, null)(UserAchievements)
 
 const styles = StyleSheet.create({
   icon: {
@@ -76,17 +84,20 @@ const styles = StyleSheet.create({
     margin: 10
   },
   achievements: {
-    width: '100%',
-    flexDirection: "row",
+    // width: '100%',
+    // flexDirection: "row",
     justifyContent: "space-between",
-    marginBottom: 16,
+    // marginBottom: 16,
+    flex: 1,
+    flexWrap: 'wrap',
+    flexDirection: 'row',
   },
   achievement: {
     width: 70,
     height: 70,
     backgroundColor: "rgba(0,0,0, 0.5)",
     borderRadius: 17,
-    // padding: 7,
-    // marginLeft: 7,
+    marginBottom: 7,
+    marginRight: 7,
   },
 });
